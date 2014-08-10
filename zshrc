@@ -2,7 +2,7 @@
 #       ANTIGEN CONFIG
 # ================================
 
-source "$HOME/.antigen/antigen.zsh"
+source "$HOME/dotfiles/antigen/antigen.zsh"
 
 antigen use oh-my-zsh
 
