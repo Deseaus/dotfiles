@@ -39,22 +39,12 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
-
 antigen apply
 
-# ================================
-#       ZSH CONFIG
-# ================================
-
-setopt AUTO_CD
-
-# History
-export HISTSIZE=1000000 SAVEHIST=1000000 HISTFILE=~/.zhistory
-
-HIST_STAMPS="dd.mm.yyyy"
 
 # ================================
 #       PERSONAL CONFIG
 # ================================
 
 source "$HOME/dotfiles/custom/deseaus.zsh"
+source "$HOME/dotfiles/custom/general.zsh"
