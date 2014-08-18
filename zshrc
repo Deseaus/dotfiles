@@ -1,3 +1,24 @@
+# ███████╗███████╗██╗  ██╗
+# ╚══███╔╝██╔════╝██║  ██║
+#   ███╔╝ ███████╗███████║
+#  ███╔╝  ╚════██║██╔══██║
+# ███████╗███████║██║  ██║
+# ╚══════╝╚══════╝╚═╝  ╚═╝
+#                         
+# ██████╗ ██╗   ██╗
+# ██╔══██╗╚██╗ ██╔╝
+# ██████╔╝ ╚████╔╝ 
+# ██╔══██╗  ╚██╔╝  
+# ██████╔╝   ██║   
+# ╚═════╝    ╚═╝   
+#                  
+# ██████╗ ███████╗███████╗███████╗ █████╗ ██╗   ██╗███████╗
+# ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝
+# ██║  ██║█████╗  ███████╗█████╗  ███████║██║   ██║███████╗
+# ██║  ██║██╔══╝  ╚════██║██╔══╝  ██╔══██║██║   ██║╚════██║
+# ██████╔╝███████╗███████║███████╗██║  ██║╚██████╔╝███████║
+# ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+                                                         
 # ================================
 #       ANTIGEN CONFIG
 # ================================
@@ -31,14 +52,6 @@ antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 # ZSH hilighting configuration
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Virtualenv Wrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Documents/
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Preferred editor for local and remote sessions
-export EDITOR='vim'
-
 antigen apply
 
 
@@ -46,5 +59,10 @@ antigen apply
 #       PERSONAL CONFIG
 # ================================
 
-source "$HOME/dotfiles/custom/deseaus.zsh"
-source "$HOME/dotfiles/custom/general.zsh"
+source "$HOME/dotfiles/aliases.zsh"
+source "$HOME/dotfiles/general.zsh"
+source "$HOME/dotfiles/functions.zsh"
+source "$HOME/dotfiles/shortcuts.zsh"
+
+ 
+export PATH=/usr/local/bin:$PATH

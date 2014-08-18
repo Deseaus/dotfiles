@@ -1,0 +1,83 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/translator/todo
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +51 TopDictionaryCat.gf
+badd +1 ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/StructuralCat.gf
+badd +4848 ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/BeschCat.gf
+badd +1 ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/LexiconCat.gf
+badd +3 ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/IrregCat.gf
+badd +0 ~/.vimrc
+argglobal
+silent! argdel *
+argadd ~/.vimrc
+edit TopDictionaryCat.gf
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 102 + 102) / 204)
+exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 51 - ((27 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+51
+normal! 03|
+lcd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src
+wincmd w
+argglobal
+edit ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/BeschCat.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 4848 - ((27 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4848
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 102 + 102) / 204)
+exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
