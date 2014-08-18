@@ -19,11 +19,11 @@
     ██████╔╝███████╗███████║███████╗██║  ██║╚██████╔╝███████║    
     ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝    
                                                                                                                                                                                       
-ZSH with a dash of Antigen and a pinch of vim, a quick recipe for my dotfiles.
+ZSH with a dash of Antigen and a pinch of Vim, a quick recipe for my dotfiles.
 
 ## The Secret Sauce 
 
-Some of the pronounced notes of obsessive simplicty and Python indentation come from the following ingredients. They all blend and complement each other to achieve a clear, well-thought taste.
+Some of the pronounced notes of obsessive simplicty and Python indentation come from the following ingredients. They all blend and complement each other to achieve a clear, well-thought flavour.
 
 ### ZSH
 
@@ -39,4 +39,4 @@ Some of the pronounced notes of obsessive simplicty and Python indentation come 
 
 ## Licence
 
-The MIT License (MIT) Copyright (c) 2014 Daniel Vidal Hussey 
+The MIT License (MIT) Copyright © 2014 Daniel Vidal Hussey 

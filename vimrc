@@ -50,7 +50,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite-outline'
-"Plugin 'Shougo/unite-help'
+Plugin 'Shougo/unite-help'
 
 " ---------------------------------
 "       Visual plugins
