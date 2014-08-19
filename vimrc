@@ -51,6 +51,8 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite-outline'
 Plugin 'Shougo/unite-help'
+Plugin 'tsukkee/unite-tag'
+Plugin 'Shougo/neocomplete.vim'
 
 " ---------------------------------
 "       Visual plugins
@@ -132,6 +134,10 @@ inoremap jj <Esc>
 " Open vertical split window and move to it
 nnoremap <leader>w <C-w>v<C-w>l
 
+" Open newlines above or below without entering insert mode.
+nnoremap OO m'O<ESC><C-o>
+nnoremap oo m'o<ESC><C-o>
+
 " Map Ctrl-movement to change windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -170,6 +176,9 @@ nnoremap <leader>n :nohl<cr>
 " Automatically source vimrc on save
 autocmd BufWritePost ~/.vimrc so ~/.vimrc
 
+" Call ctags automatically on write
+"autocmd BufWritePost * call system("ctags -R")
+
 " =================================
 "       PLUGIN CONFIG
 " =================================
@@ -178,7 +187,7 @@ autocmd BufWritePost ~/.vimrc so ~/.vimrc
 "           Unite
 " ---------------------------------
 call unite#custom#profile('default', 'context', {
-    \   'winheight': 25,
+    \   'winheight': 30,
     \   'direction': 'topleft',
     \ })
 
@@ -201,16 +210,18 @@ nmap <space> [unite]
 map [unite]f :Unite -no-split -buffer-name=files -start-insert file_rec/async<CR>
 map [unite]b :Unite -no-split -buffer-name=buffers buffer<CR>
 map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
-map [unite]o :Unite -no-split -buffer-name=outline -auto-preview outline<CR>
+map [unite]t :Unite -no-split -buffer-name=tags tag<CR>
+map [unite]ti :Unite -no-split -buffer-name=tags-include tag/include<CR>
+map [unite]o :Unite -no-split -buffer-name=outline outline<CR>
 map [unite]h :Unite -no-split -auto-preview -buffer-name=unite-help help<cr>
 " Ag in current file (better than grep:%)
 map [unite]gf :Unite -no-split -auto-preview -buffer-name=grep-file -start-insert line<CR>
 " Ag in current dir
 map [unite]gd :Unite -no-split -auto-preview -buffer-name=grep-dir -start-insert grep:.<CR>
 " Ag in all buffers
-map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers -start-insert grep:$buffers<CR>
+map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers grep:$buffers<CR>
 " Ag for todos
-map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos -start-insert grep:.:-s:\(TODO\|FIXME\)<cr>
+map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\(TODO\|FIXME\)<CR>
 
 " ----------------------------------
 "        Startify              
@@ -254,3 +265,13 @@ let g:startify_custom_header = [
 
 "  Don't set mappings
 let g:gitgutter_map_keys = 0
+
+" ----------------------------------
+"        Neocomplete              
+" ----------------------------------
+
+inoremap <expr><Tab>  neocomplete#start_manual_complete()
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+let g:neocomplete#enable_smart_case = 1

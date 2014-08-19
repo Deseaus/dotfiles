@@ -27,3 +27,4 @@
 gftranslate=~/Documents/MLT/6-Computational-Syntax/GF/lib/src/translator/todo
 mlt=~/Documents/MLT
 website=~/Documents/dvh-io
+me=~/Documents/Me
