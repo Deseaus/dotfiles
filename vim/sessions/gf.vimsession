@@ -8,14 +8,13 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +830 translator/todo/TopDictionaryCat.gf
-badd +132 catalan/StructuralCat.gf
+badd +50 translator/todo/TopDictionaryCat.gf
+badd +1 catalan/StructuralCat.gf
 badd +5914 catalan/BeschCat.gf
 badd +83 catalan/LexiconCat.gf
-badd +3 catalan/IrregCat.gf
+badd +19 catalan/IrregCat.gf
 badd +4 translator/todo/TopDictionarySpa.gf
-badd +96 translator/todo/TopDictionary.gf
-badd +248 translator/todo/clean.txt
+badd +97 translator/todo/TopDictionary.gf
 argglobal
 silent! argdel *
 argadd ~/.vimrc
@@ -41,16 +40,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 126 - ((18 * winheight(0) + 28) / 56)
+let s:l = 289 - ((26 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-126
+289
 normal! 0
 lcd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src
 wincmd w
 argglobal
-edit ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/translator/todo/TopDictionary.gf
+edit ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/StructuralCat.gf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -60,11 +59,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 96 - ((27 * winheight(0) + 28) / 56)
+let s:l = 194 - ((21 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-96
+194
 normal! 0
 lcd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src
 wincmd w
@@ -75,7 +74,7 @@ if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToO
+set winheight=1 winwidth=20 shortmess=filnxtToOc
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

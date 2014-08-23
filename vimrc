@@ -3,8 +3,8 @@
 " ██║   ██║██║██╔████╔██║                                  
 " ╚██╗ ██╔╝██║██║╚██╔╝██║                                  
 "  ╚████╔╝ ██║██║ ╚═╝ ██║                                  
-"    ╚═══╝  ╚═╝╚═╝     ╚═╝                                  
-"                                                             
+"   ╚═══╝  ╚═╝╚═╝     ╚═╝                                  
+"                                                          
 " ██████╗ ██╗   ██╗                                        
 " ██╔══██╗╚██╗ ██╔╝                                        
 " ██████╔╝ ╚████╔╝                                         
@@ -20,9 +20,9 @@
 " ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
 "
 " Daniel Vidal Hussey
-" dvh.io
+" http://dvh.io
 " http://github.io/Deseaus/dotfiles
-                                                           
+
 set nocompatible              " Don't be compatible with Vi
 filetype off                  " Required to install Vundle
 
@@ -58,18 +58,20 @@ Plugin 'Shougo/neocomplete.vim'
 " ---------------------------------
 "       Visual plugins
 " ---------------------------------
-Plugin 'mhinz/vim-startify'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-startify'                 " Useful vim slash screen with sessions
+Plugin 'bling/vim-airline'                  " Pretty status line TODO configure me
+Plugin 'altercation/vim-colors-solarized'   " Handsome vim
+Plugin 'airblade/vim-gitgutter'             " Show git diff marks in gutter
+Plugin 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
+Plugin 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
 
-call vundle#end() 
+call vundle#end()
 filetype plugin indent on
 
 " =================================
 "           MAIN
 " =================================
- 
+
 set guifont=Source\ Code\ Pro:h11
 syntax enable
 set laststatus=2
@@ -92,7 +94,7 @@ set number                      " Line numbers on left-hand side
 set showcmd                     " Update status line when selecting text
 
 set tabstop=4                   " Number of spaces a tab represents
-set shiftwidth=4                " Number of spaces shifted with a shift >>
+set shiftwidth=4                " Number of spaces shifted with >> command
 set expandtab                   " Use spaces rather than hard tab characters
 set softtabstop=4               " Tab spaces in no hard tab mode
 set autoindent                  " Indent correctly
@@ -118,7 +120,7 @@ set relativenumber              " Set line numbers to be relative to the current
 set noshowmode                  " Airline takes care of showing the current mode
 set cpoptions+=$                " Add a $ at the end of what you're changing with c
 set wildmenu                    " Add a tabbed helper menu
-set wildmode=full               " Complete first full match, next match, etc.  
+set wildmode=full               " Complete first full match, next match, etc.
 set nrformats=                  " Make Ctrl-a and Ctrl-x treat all numbers as decimal,
                                 " even with padded 0s.
 set listchars=eol:¬,tab:▸·,trail:·,nbsp:~
@@ -133,6 +135,8 @@ let mapleader = "ñ"
 
 " Exit to normal mode
 inoremap jj <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
 
 " Open vertical split window and move to it
 nnoremap <leader>w <C-w>v<C-w>l
@@ -157,7 +161,7 @@ nnoremap  <Space><Space> za
 " Q quits the window
 nnoremap Q :q<CR>
 
-" +/-: Increment number
+" +/-: Increment number on the line
 nnoremap + <c-a>
 nnoremap - <c-x>
 
@@ -174,17 +178,15 @@ nnoremap <leader>n :nohl<CR>
 nnoremap <leader>h :set list!<CR>
 
 " =================================
-"       AUTOCMD 
+"       AUTOCMD
 " =================================
-
-" FIXME man pages autocmd not working. Must learn VimL!
-autocmd BufReadPost man set colorcolumn= nonumber
 
 " Automatically source vimrc on save
 autocmd BufWritePost ~/.vimrc so ~/.vimrc
 
 " Call ctags automatically on write
-autocmd BufWritePost * call system("ctags -R --fields=+iaSnm .")
+autocmd BufWritePost * call system("ctags -R --fields=+iaSnm --exclude=build
+            \ --exclude=.svn --exclude=.git --exclude=log --exclude=tmp .")
 
 " Don't auto-insert a comment leader on the following line
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -196,15 +198,13 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " ---------------------------------
 "           Airline
 " ---------------------------------
+
 let g:airline_powerline_fonts = 1
+" TODO config me please?
 
 " ---------------------------------
 "           Unite
 " ---------------------------------
-call unite#custom#profile('default', 'context', {
-    \   'winheight': 30,
-    \   'direction': 'topleft',
-    \ })
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
@@ -223,7 +223,7 @@ nnoremap [unite] <Nop>
 nmap <space> [unite]
 
 map [unite]f :Unite -no-split -buffer-name=files -start-insert file_rec/async<CR>
-map [unite]b :Unite -no-split -buffer-name=buffers buffer<CR>
+map [unite]b :Unite -no-split -buffer-name=buffers -quick-match buffer<CR>
 map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
 " NeoCompleteIncludeMakeCache included as per https://github.com/Shougo/unite.vim/issues/373
 map [unite]t :NeoCompleteIncludeMakeCache<CR>:Unite -no-split -buffer-name=tags-include tag/include<CR>
@@ -239,11 +239,12 @@ map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers grep:$buf
 map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\(TODO\|FIXME\)<CR>
 
 " ----------------------------------
-"        Startify              
+"        Startify
 " ----------------------------------
+
 let g:startify_session_dir = '~/.vim/sessions'
-let g:startify_list_order = [  
-        \ ['   Sessions:'],    
+let g:startify_list_order = [
+        \ ['   Sessions:'],
         \ 'sessions',
         \ ['   Bookmarks:'],
         \ 'bookmarks',
@@ -275,24 +276,24 @@ let g:startify_custom_header = [
             \]
 
 " ----------------------------------
-"        Gitgutter              
+"        Gitgutter
 " ----------------------------------
 
 "  Don't set mappings
 let g:gitgutter_map_keys = 0
 
 " ----------------------------------
-"        Neocomplete              
+"        Neocomplete
 " ----------------------------------
 
 inoremap <expr><Tab>  neocomplete#start_manual_complete()
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" " Use smartcase.
+" Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 
 " ----------------------------------
-"           Pymode              
+"           Pymode
 " ----------------------------------
 
 let g:pymode = 1
@@ -304,3 +305,10 @@ let g:pymode_folding = 1
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
+
+" ----------------------------------
+"           Smooth Scroll
+" ----------------------------------
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>

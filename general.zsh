@@ -59,3 +59,7 @@ foreground-vi() {
 }
 zle -N foreground-vi
 bindkey '^Z' foreground-vi
+
+# vi bindings!
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
