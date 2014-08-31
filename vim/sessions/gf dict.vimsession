@@ -8,28 +8,24 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +50 translator/todo/TopDictionaryCat.gf
-badd +1 catalan/StructuralCat.gf
-badd +5914 catalan/BeschCat.gf
-badd +83 catalan/LexiconCat.gf
+badd +1651 translator/todo/TopDictionaryCat.gf
+badd +34 catalan/StructuralCat.gf
+badd +562 catalan/BeschCat.gf
+badd +171 catalan/LexiconCat.gf
 badd +19 catalan/IrregCat.gf
-badd +4 translator/todo/TopDictionarySpa.gf
-badd +97 translator/todo/TopDictionary.gf
+badd +497 translator/todo/TopDictionarySpa.gf
+badd +1323 translator/todo/TopDictionary.gf
+badd +1 ~/.vimrc
+badd +483 translator/todo/TopDictionaryEng.gf
 argglobal
 silent! argdel *
 argadd ~/.vimrc
 edit translator/todo/TopDictionaryCat.gf
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 102 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -40,35 +36,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 289 - ((26 * winheight(0) + 28) / 56)
+let s:l = 1677 - ((27 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-289
-normal! 0
+1677
+normal! 045|
 lcd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src
-wincmd w
-argglobal
-edit ~/Documents/MLT/6-Computational-Syntax/GF/lib/src/catalan/StructuralCat.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 194 - ((21 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-194
-normal! 0
-lcd ~/Documents/MLT/6-Computational-Syntax/GF/lib/src
-wincmd w
-exe 'vert 1resize ' . ((&columns * 102 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

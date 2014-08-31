@@ -33,3 +33,4 @@ mlt=~/Documents/MLT
 website=~/Documents/dvh-io
 me=~/Documents/Me
 dotfiles=~/dotfiles
+projects=~/Documents/Projects

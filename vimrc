@@ -38,12 +38,10 @@ call vundle#begin()
 "       Utility plugins
 " ---------------------------------
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'tpope/vim-fugitive'
 Plugin 'gdetrez/vim-gf'         " GF syntax higlighting
-"Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/gundo.vim'          " FIXME not working, python problem?
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
 
 " ---------------------------------
 "       Unite plugins
@@ -63,7 +61,7 @@ Plugin 'bling/vim-airline'                  " Pretty status line TODO configure 
 Plugin 'altercation/vim-colors-solarized'   " Handsome vim
 Plugin 'airblade/vim-gitgutter'             " Show git diff marks in gutter
 Plugin 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
-Plugin 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
+"Plugin 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
 
 call vundle#end()
 filetype plugin indent on
@@ -176,6 +174,12 @@ nnoremap <leader>n :nohl<CR>
 
 "List hidden chars
 nnoremap <leader>h :set list!<CR>
+
+" Yank text to the OS X clipboard
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+noremap <leader>p "*p
+noremap <leader>pp "*P
 
 " =================================
 "       AUTOCMD
