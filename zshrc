@@ -18,6 +18,10 @@
 # ██║  ██║██╔══╝  ╚════██║██╔══╝  ██╔══██║██║   ██║╚════██║
 # ██████╔╝███████╗███████║███████╗██║  ██║╚██████╔╝███████║
 # ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+#
+# Daniel Vidal Hussey
+# http://dvh.io
+# http://github.io/Deseaus/dotfiles
                                                          
 # ================================
 #       ANTIGEN CONFIG
@@ -65,4 +69,5 @@ source "$HOME/dotfiles/functions.zsh"
 source "$HOME/dotfiles/shortcuts.zsh"
 
  
+# Path required for Homebrew and Virtualenv
 export PATH=/usr/local/bin:$PATH

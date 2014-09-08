@@ -290,7 +290,7 @@ let g:gitgutter_map_keys = 0
 "        Neocomplete
 " ----------------------------------
 
-inoremap <expr><Tab>  neocomplete#start_manual_complete()
+" inoremap <expr><Tab>  neocomplete#start_manual_complete()
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.

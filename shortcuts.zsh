@@ -30,6 +30,8 @@
 
 gftranslate=~/Documents/MLT/6-Computational-Syntax/GF/lib/src/translator/todo
 mlt=~/Documents/MLT
+ml=~/Documents/MLT/8–Machine\ Learning
+ir=~/Documents/MLT/9–Information\ Retrieval
 website=~/Documents/dvh-io
 me=~/Documents/Me
 dotfiles=~/dotfiles

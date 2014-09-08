@@ -53,13 +53,18 @@ setopt EXTENDED_HISTORY
 setopt HIST_REDUCE_BLANKS
 export HISTSIZE=1000000 SAVEHIST=1000000 HISTFILE=~/.zhistory
 
+# ================================
+#       KEY BINDINGS
+# ================================
+
+# vi bindings!
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+
 # After vim Ctrl-Z to terminal, use Ctrl-Z again to enter vim
+# Must be placed AFTER vim bindings to work properly
 foreground-vi() {
   fg %vi
 }
 zle -N foreground-vi
 bindkey '^Z' foreground-vi
-
-# vi bindings!
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
