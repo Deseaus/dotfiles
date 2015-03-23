@@ -8,16 +8,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +21 dotfiles/general.zsh
+badd +21 Documents/Courses/MLT/8_Machine_Learning/Assignment\ 1/funtag.py
+badd +109 Documents/Courses/MLT/8_Machine_Learning/Assignment\ 2/ml_lecture3.py
+badd +50 Documents/Courses/MLT/8_Machine_Learning/Assignment\ 2/experiment.py
+badd +116 Documents/Courses/MLT/8_Machine_Learning/Assignment\ 3/sequence_tagger.py
+badd +200 Documents/Courses/MLT/8_Machine_Learning/Assignment\ 3/structured_perceptron.py
+badd +46 dotfiles/general.zsh
 badd +1 dotfiles/shortcuts.zsh
 badd +1 dotfiles/functions.zsh
 badd +1 dotfiles/README.md
-badd +1 dotfiles/vimrc
+badd +186 dotfiles/vimrc
 badd +1 dotfiles/zshrc
-badd +0 dotfiles/aliases.zsh
+badd +23 dotfiles/aliases.zsh
+badd +19 \[Vundle]\ Installer
+badd +51 /private/var/folders/gp/zx_jdvz11tb4q2cxd75ch4lh0000gn/T/v6ISPlG/80
 argglobal
 silent! argdel *
-edit dotfiles/aliases.zsh
+edit Documents/Courses/MLT/8_Machine_Learning/Assignment\ 3/structured_perceptron.py
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -33,11 +40,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+let s:l = 200 - ((27 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+200
 normal! 0
 lcd ~/dotfiles
 tabnext 1

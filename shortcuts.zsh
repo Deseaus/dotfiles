@@ -28,10 +28,13 @@
 # PROJECT SHORTCUTS
 # ******************
 
-gftranslate=~/Documents/MLT/6-Computational-Syntax/GF/lib/src/translator/todo
-mlt=~/Documents/MLT
-ml=~/Documents/MLT/8–Machine\ Learning
-ir=~/Documents/MLT/9–Information\ Retrieval
+gfdir=~/Documents/NLP/GF
+papers=~/Documents/NLP/Papers
+gfwork=~/Documents/Projects/gftrans
+moses=~/Documents/NLP/mosesdecoder
+mlt=~/Documents/Courses/MLT
+tesi=~/Documents/Courses/MLT/12-Master\ Thesis
+coursera=~/Documents/Courses/Machine\ Learning\ (Coursera)
 website=~/Documents/dvh-io
 me=~/Documents/Me
 dotfiles=~/dotfiles

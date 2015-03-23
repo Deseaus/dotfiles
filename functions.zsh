@@ -70,3 +70,9 @@ function generate_ssh_key {
 	ssh-keygen -t rsa;
 	cat ~/.ssh/id_rsa.pub;
 }
+
+# mkdir & cd
+# https://www.reddit.com/r/commandline/comments/2jl8t8/what_are_your_funniest_or_most_useful_alias_in/clcrp3e
+function mcd {
+    mkdir -p "$1" && cd "$1"
+}

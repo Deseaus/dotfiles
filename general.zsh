@@ -32,6 +32,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Documents/
 source /usr/local/bin/virtualenvwrapper.sh
 
+# For Python3 to print correctly
+export PYTHONIOENCODING=utf-8
+
 # CD without typing cd
 setopt AUTO_CD
 
@@ -45,7 +48,13 @@ setopt PUSHD_IGNORE_DUPS
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
 
-# History
+# ================================
+#       HISTORY
+# ================================
+
+# Allow multiple terminal sessions to all append to one zsh command history
+setopt APPEND_HISTORY
+
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt HIST_IGNORE_ALL_DUPS

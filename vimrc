@@ -38,10 +38,13 @@ call vundle#begin()
 "       Utility plugins
 " ---------------------------------
 Plugin 'gmarik/Vundle.vim'
-Plugin 'gdetrez/vim-gf'         " GF syntax higlighting
-Plugin 'sjl/gundo.vim'          " FIXME not working, python problem?
+Plugin 'gdetrez/vim-gf'                  " GF syntax higlighting
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'klen/python-mode'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'mbbill/undotree'
+Plugin 'pdurbin/vim-tsv'
 
 " ---------------------------------
 "       Unite plugins
@@ -62,6 +65,7 @@ Plugin 'altercation/vim-colors-solarized'   " Handsome vim
 Plugin 'airblade/vim-gitgutter'             " Show git diff marks in gutter
 Plugin 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
 "Plugin 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
+Plugin 'junegunn/goyo.vim'                  " Easier writing
 
 call vundle#end()
 filetype plugin indent on
@@ -78,8 +82,12 @@ colorscheme solarized
 
 set backspace=indent,eol,start  " Allow backspace in all circumstances
 set history=10000                " Allow undo, remember last command with up
-set undolevels=5000             " Use many levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
+set undolevels=5000             " Use many levels of undo
+if has("persistent_undo")
+    set undodir='~/.undodir/'
+    set undofile
+endif
 
 set mouse=a                     " Allow selection with the mouse in all mode
 set timeout timeoutlen=225 ttimeoutlen=150
@@ -113,6 +121,7 @@ set fileencoding=utf-8          " unless you're using Notepad
 " VISUAL STUFF ========================================================
 set colorcolumn=79              " Highlight column 79
 set cursorline  cursorcolumn    " Horizontal and vertical cursor line: crosshairs + :)
+set linebreak                   " Don't break in the middle of a word.
 set scrolloff=2                 " When cursor is 2 lines from bottom, scroll
 set relativenumber              " Set line numbers to be relative to the current line
 set noshowmode                  " Airline takes care of showing the current mode
@@ -165,6 +174,7 @@ nnoremap - <c-x>
 
 " Return to issue an ex command
 nnoremap <CR> :
+vnoremap <CR> :
 " Make sure it doesn't interfere with quickfix windows
 "autocmd CmdwinEnter * nnoremap <CR> <CR>
 "autocmd BufReadPost quickfix nnoremap <CR> <CR>
@@ -180,6 +190,12 @@ noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>p "*p
 noremap <leader>pp "*P
+
+" Make Y consistent with C, D.
+nnoremap Y y$
+
+" Make K split lines (pair with J to join lines)
+noremap K i<cr><esc>k$
 
 " =================================
 "       AUTOCMD
@@ -232,6 +248,7 @@ map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
 " NeoCompleteIncludeMakeCache included as per https://github.com/Shougo/unite.vim/issues/373
 map [unite]t :NeoCompleteIncludeMakeCache<CR>:Unite -no-split -buffer-name=tags-include tag/include<CR>
 map [unite]o :Unite -no-split -auto-preview -buffer-name=outline outline<CR>
+map [unite]oa :Unite -no-split -buffer-name=outline-all outline<CR>
 map [unite]h :Unite -no-split -auto-preview -buffer-name=unite-help help<CR>
 " Ag in current file (better than grep:%)
 map [unite]gf :Unite -no-split -auto-preview -buffer-name=grep-file -start-insert line<CR>
@@ -287,28 +304,32 @@ let g:startify_custom_header = [
 let g:gitgutter_map_keys = 0
 
 " ----------------------------------
-"        Neocomplete
-" ----------------------------------
-
-" inoremap <expr><Tab>  neocomplete#start_manual_complete()
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-
-" ----------------------------------
 "           Pymode
 " ----------------------------------
+let g:pymode_rope = 1
 
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'S'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+let g:pymode_folding = 0
+
+" Support virtualenv
+
+let g:pymode_python = 'python3'
 let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_options = 1
 let g:pymode_quickfix_minheight = 3
 let g:pymode_quickfix_maxheight = 6
-let g:pymode_folding = 1
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
+"let g:pymode_run_bind = '<leader>r' "Conflict with Goyo!
 
 " ----------------------------------
 "           Smooth Scroll
@@ -316,3 +337,43 @@ let g:pymode_run_bind = '<leader>r'
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+" ----------------------------------
+"           Goyo
+" ----------------------------------
+
+nnoremap <Leader>r :Goyo<CR>
+
+" ----------------------------------
+"           LaTeX-Box
+" ----------------------------------
+
+let g:LatexBox_no_mappings = 0
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2
+let g:LatexBox_Folding = 0
+let g:LatexBox_custom_indent = 0
+
+" ----------------------------------
+"        Neocomplete
+" ----------------------------------
+
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+"let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+
