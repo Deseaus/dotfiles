@@ -24,51 +24,48 @@
 " http://github.io/Deseaus/dotfiles
 
 set nocompatible              " Don't be compatible with Vi
-filetype off                  " Required to install Vundle
 
 " =================================
 "           PLUGINS
 " =================================
 
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " ---------------------------------
-"       Utility plugins
+"       Utility Plugins
 " ---------------------------------
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Deseaus/vim-gf'
-Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'klen/python-mode'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-"Plugin 'davidhalter/jedi-vim'
-Plugin 'mbbill/undotree'
-Plugin 'pdurbin/vim-tsv'
+Plug 'Deseaus/vim-gf', {'for' : 'gf'}
+Plug 'terryma/vim-multiple-cursors'
+"Plug 'klen/python-mode'
+Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
+"Plug 'davidhalter/jedi-vim'
+Plug 'mbbill/undotree'
+Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
 
 " ---------------------------------
-"       Unite plugins
+"       Unite Plugins
 " ---------------------------------
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite-outline'
-Plugin 'Shougo/unite-help'
-Plugin 'tsukkee/unite-tag'
-Plugin 'Shougo/neocomplete.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/unite-help'
+Plug 'tsukkee/unite-tag'
+Plug 'Shougo/neocomplete.vim'
 
 " ---------------------------------
-"       Visual plugins
+"       Visual Plugins
 " ---------------------------------
-Plugin 'mhinz/vim-startify'                 " Useful vim slash screen with sessions
-Plugin 'bling/vim-airline'                  " Pretty status line TODO configure me
-Plugin 'altercation/vim-colors-solarized'   " Handsome vim
-Plugin 'airblade/vim-gitgutter'             " Show git diff marks in gutter
-Plugin 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
-"Plugin 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
-Plugin 'junegunn/goyo.vim'                  " Easier writing
+Plug 'mhinz/vim-startify'                 " Useful vim slash screen with sessions
+Plug 'bling/vim-airline'                  " Pretty status line TODO configure me
+Plug 'altercation/vim-colors-solarized'   " Handsome vim
+Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
+Plug 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
+"Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
+Plug 'junegunn/goyo.vim'                  " Easier writing
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
+
+"filetype plugin indent on
 
 " =================================
 "           MAIN
