@@ -38,11 +38,11 @@ call vundle#begin()
 "       Utility plugins
 " ---------------------------------
 Plugin 'gmarik/Vundle.vim'
-Plugin 'gdetrez/vim-gf'                  " GF syntax higlighting
+Plugin 'Deseaus/vim-gf'
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'klen/python-mode'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'mbbill/undotree'
 Plugin 'pdurbin/vim-tsv'
 
