@@ -36,9 +36,10 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
+" TODO Sort out python plugins
 "Plug 'klen/python-mode'
-Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 "Plug 'davidhalter/jedi-vim'
+Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
 
@@ -65,11 +66,10 @@ Plug 'junegunn/goyo.vim'                  " Easier writing
 
 call plug#end()
 
-"filetype plugin indent on
-
 " =================================
 "           MAIN
 " =================================
+
 
 set guifont=Source\ Code\ Pro:h11
 syntax enable
@@ -80,11 +80,13 @@ colorscheme solarized
 set backspace=indent,eol,start  " Allow backspace in all circumstances
 set history=10000                " Allow undo, remember last command with up
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set undolevels=5000             " Use many levels of undo
 if has("persistent_undo")
-    set undodir='~/.undodir/'
+    set undodir=~/.vim/undo
     set undofile
 endif
+set undolevels=5000             " Use many levels of undo
+set undoreload=5000
+
 
 set mouse=a                     " Allow selection with the mouse in all mode
 set timeout timeoutlen=225 ttimeoutlen=150
@@ -332,14 +334,24 @@ let g:pymode_run = 1
 "           Smooth Scroll
 " ----------------------------------
 
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " ----------------------------------
 "           Goyo
 " ----------------------------------
 
 nnoremap <Leader>r :Goyo<CR>
+
+" ----------------------------------
+"           Undotree
+" ----------------------------------
+
+nnoremap <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_SplitWidth = 40
+let g:undotree_DiffpanelHeight = 8
 
 " ----------------------------------
 "           LaTeX-Box
@@ -368,9 +380,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
+"autocmd FileType python setlocal omnifunc=jedi#completions
+"let g:jedi#completions_enabled = 0
+"let g:jedi#auto_vim_configuration = 0
 "let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
