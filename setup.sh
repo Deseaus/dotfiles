@@ -7,7 +7,7 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 
 # List of files/folders to symlink in homedir
-files="gitconfig gitignore antigen vim vimrc zshrc"
+files="gitconfig gitignore antigen vim vimrc nvim nvimrc zshrc"
 
 # Create dotfiles_old in homedir
 echo "Install dotfiles"
