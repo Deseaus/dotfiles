@@ -279,6 +279,8 @@ let g:startify_list_order = [
         \ 'bookmarks',
         \ ['   Recents:'],
         \ 'files',
+        \ ['   Current directory:'],
+        \ 'dir',
         \ ]
 let g:startify_custom_indices = ['f', 'g', 'h']
 let g:startify_bookmarks = [

@@ -9,18 +9,16 @@ olddir=~/dotfiles_old             # old dotfiles backup directory
 # List of files/folders to symlink in homedir
 files="gitconfig gitignore antigen vim vimrc zshrc"
 
-
 # Create dotfiles_old in homedir
 echo "Install dotfiles"
+echo "================"
 echo " "
-echo -n "1. Creating $olddir to backup any existing dotfiles in ~ ..."
+echo "1. Creating $olddir to backup any existing dotfiles in ~ ..."
 mkdir -p $olddir
-echo "done"
 
 # Change to the dotfiles directory
-echo -n "2. Changing to the $dir directory..."
+echo "2. Changing to the $dir directory..."
 cd $dir
-echo "done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 echo "3. Installing..."
@@ -54,4 +52,5 @@ else
 fi
 }
 
-install_zsh
+# TODO get this function working properly
+#install_zsh
