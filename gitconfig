@@ -1,0 +1,23 @@
+[user]
+	name = Daniel Vidal Hussey
+	email = daniel.vidal.hussey@gmail.com
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/Dani/.gitignore_global
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[color]
+	ui = auto
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    up = rebase
+    ci = commit
+[push]
+	default = simple
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
