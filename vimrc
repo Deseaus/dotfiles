@@ -262,6 +262,15 @@ map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\
 "        Startify
 " ----------------------------------
 
+hi StartifyBracket ctermfg=244
+hi StartifyFile    ctermfg=136
+hi StartifyFooter  ctermfg=244
+hi StartifyHeader  ctermfg=33
+hi StartifyNumber  ctermfg=166
+hi StartifyPath    ctermfg=244
+hi StartifySlash   ctermfg=245
+hi StartifySpecial ctermfg=244
+
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_list_order = [
         \ ['   Sessions:'],
@@ -271,6 +280,7 @@ let g:startify_list_order = [
         \ ['   Recents:'],
         \ 'files',
         \ ]
+let g:startify_custom_indices = ['f', 'g', 'h']
 let g:startify_bookmarks = [
             \ '~/dotfiles/vimrc',
             \ '~/dotfiles/zshrc',
@@ -291,6 +301,18 @@ let g:startify_custom_header = [
             \ '                     ╚██╗ ██╔╝██║██║╚██╔╝██║ ',
             \ '                      ╚████╔╝ ██║██║ ╚═╝ ██║ ',
             \ '                       ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
+            \ '',
+            \ '',
+            \]
+let g:startify_custom_footer = [
+            \ '',
+            \ '',
+            \ '     e   New empty buffer.                   ',
+            \ '     i   New empty buffer in insert mode.    ',
+            \ '     b   Open in the same buffer.            ',
+            \ '     s   Open in split.                      ',
+            \ '     v   Open in vertical split.             ',
+            \ '     t   Open in tab.                        ',
             \ '',
             \ '',
             \]
