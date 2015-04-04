@@ -36,9 +36,7 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
-" TODO Sort out python plugins
-"Plug 'klen/python-mode'
-"Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
@@ -60,7 +58,6 @@ Plug 'mhinz/vim-startify'                 " Useful vim slash screen with session
 Plug 'bling/vim-airline'                  " Pretty status line TODO configure me
 Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
-Plug 'terryma/vim-smooth-scroll'          " Smoothish scrolling!
 "Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
 Plug 'junegunn/goyo.vim'                  " Easier writing
 
@@ -329,37 +326,30 @@ let g:gitgutter_map_keys = 0
 " ----------------------------------
 "           Pymode
 " ----------------------------------
-let g:pymode_rope = 1
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'S'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-let g:pymode_folding = 0
-
-" Support virtualenv
-
-let g:pymode_python = 'python3'
-let g:pymode = 1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options = 1
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
-let g:pymode_virtualenv = 1
-let g:pymode_run = 1
-"let g:pymode_run_bind = '<leader>r' "Conflict with Goyo!
-
-" ----------------------------------
-"           Smooth Scroll
-" ----------------------------------
-
-"noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-"noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+"let g:pymode_rope = 1
+"
+"" Documentation
+"let g:pymode_doc = 1
+"let g:pymode_doc_bind = 'S'
+"
+""Linting
+"let g:pymode_lint = 1
+"let g:pymode_lint_checker = "pyflakes,pep8"
+"" Auto check on save
+"let g:pymode_lint_write = 1
+"let g:pymode_folding = 0
+"
+"" Support virtualenv
+"
+"let g:pymode_python = 'python3'
+"let g:pymode = 1
+"let g:pymode_trim_whitespaces = 1
+"let g:pymode_options = 1
+"let g:pymode_quickfix_minheight = 3
+"let g:pymode_quickfix_maxheight = 6
+"let g:pymode_virtualenv = 1
+"let g:pymode_run = 1
+""let g:pymode_run_bind = '<leader>r' "Conflict with Goyo!
 
 " ----------------------------------
 "           Goyo
@@ -397,16 +387,39 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
+highlight Pmenu ctermbg=8 guibg=#606060
+highlight PmenuSel ctermbg=1 guifg=#dddd00 guibg=#1f82cd
+highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"autocmd FileType python setlocal omnifunc=jedi#completions
-"let g:jedi#completions_enabled = 0
-"let g:jedi#auto_vim_configuration = 0
+" TODO FIXME Neocomplete + jedi-vim
+
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 "let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
+" ----------------------------------
+"        Jedi
+" ----------------------------------
+"let g:jedi#auto_vim_configuration = 0
+
+"let g:jedi#completions_command = "<C-N>"
+let g:jedi#completions_command = ""
+let g:jedi#usages_command = "<leader>m"
+let g:jedi#documentation_command = "<leader>s"
+let g:jedi#rename_command = ""
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+
+"let g:jedi#popup_select_first = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "top"
+let g:jedi#force_py_version = 3
+let g:jedi#popup_select_first = 0

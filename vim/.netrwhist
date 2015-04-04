@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/Dani/.config/menus/applications-merged'
+let g:netrw_dirhist_2='/Users/Dani/.config/menus'
+let g:netrw_dirhist_3='/Users/Dani/.config'
+let g:netrw_dirhist_4='/Users/Dani/.config/git'
+let g:netrw_dirhist_5='/Users/Dani/.continuum'
+let g:netrw_dirhist_6='/Users/Dani'
+let g:netrw_dirhist_7='/Users/Dani/.ssh'
