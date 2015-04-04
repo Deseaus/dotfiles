@@ -40,6 +40,7 @@ alias tree='tree -AC'	                    # Print pretty lines colourise
 alias cp='cp -i'                            # Don't silently overwrite
 
 alias v='vim'
+alias nv='nvim'
 alias p='python'
 alias p3='python3'
 alias ip3="ipython3"
@@ -61,4 +62,6 @@ alias -s md=vim
 alias -s markdown=vim
 alias -s css=vim
 alias -s js=vim
+alias -s html=vim
+alias -s json=vim
 

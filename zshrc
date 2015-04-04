@@ -73,6 +73,7 @@ source "$HOME/dotfiles/shortcuts.zsh"
 export PATH=/usr/local/bin:$PATH
 
 # Path to Haskell binaries
-#export PATH=$HOME/Library/Haskell/bin:$PATH
 export PATH=$PATH:/Users/Dani/Library/Haskell/bin
 export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.8.4/lib/gf-3.6.10/share/lib
+export LC_ALL=en_GB.UTF-8
+export LANG=en_GB.UTF-8

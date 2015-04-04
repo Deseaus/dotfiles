@@ -28,14 +28,23 @@
 # PROJECT SHORTCUTS
 # ******************
 
+# NLP + Code
+nlp=~/Documents/NLP
 gfdir=~/Documents/NLP/GF
+gflib=~/Documents/NLP/GF/lib/src
 papers=~/Documents/NLP/Papers
-gfwork=~/Documents/Projects/gftrans
 moses=~/Documents/NLP/mosesdecoder
+
+# Study
 mlt=~/Documents/Courses/MLT
 tesi=~/Documents/Courses/MLT/12-Master\ Thesis
-coursera=~/Documents/Courses/Machine\ Learning\ (Coursera)
+thesis=~/Documents/Courses/MLT/12-Master\ Thesis
+
+# Personal
 website=~/Documents/dvh-io
+dvhio=~/Documents/dvh-io
+
+# Code
 me=~/Documents/Me
 dotfiles=~/dotfiles
 projects=~/Documents/Projects
