@@ -5,6 +5,8 @@
 	helper = osxkeychain
 [core]
 	excludesfile = /Users/Dani/.gitignore_global
+	autocrlf = input
+	safecrlf = true
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f

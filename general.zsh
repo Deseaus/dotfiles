@@ -21,19 +21,23 @@
 #  ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
                                                          
 # ================================
-#       ZSH CONFIG
+#       ENV
 # ================================
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
 # Virtualenv Wrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Documents/
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.virtualenvs
+# export PROJECT_HOME=$HOME/Documents/
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # For Python3 to print correctly
 export PYTHONIOENCODING=utf-8
+
+# ================================
+#       ZSH CONFIG
+# ================================
 
 # CD without typing cd
 setopt AUTO_CD
