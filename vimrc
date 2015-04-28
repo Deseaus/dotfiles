@@ -212,6 +212,13 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " =================================
 
 " ---------------------------------
+"           Netrw (Built-in)
+" ---------------------------------
+
+" Default to NERDTree like behaviour.
+let g:netrw_liststyle=3
+
+" ---------------------------------
 "           Airline
 " ---------------------------------
 
@@ -326,6 +333,7 @@ let g:gitgutter_map_keys = 0
 " ----------------------------------
 "           Pymode
 " ----------------------------------
+
 "let g:pymode_rope = 1
 "
 "" Documentation
@@ -363,7 +371,7 @@ nnoremap <Leader>r :Goyo<CR>
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_WindowLayout = 2
+let g:undotree_WindowLayout = 1
 let g:undotree_SplitWidth = 40
 let g:undotree_DiffpanelHeight = 8
 
@@ -408,6 +416,7 @@ let g:jedi#auto_vim_configuration = 0
 " ----------------------------------
 "        Jedi
 " ----------------------------------
+
 "let g:jedi#auto_vim_configuration = 0
 
 "let g:jedi#completions_command = "<C-N>"

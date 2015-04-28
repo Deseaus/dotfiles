@@ -1,0 +1,215 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/Documents/NLP/GF/lib/src/style
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +4 RuleAll.gf
+badd +0 RuleApproved.gf
+badd +0 RuleHint.gf
+badd +0 RuleToHint.gf
+badd +0 RuleToRGL.gf
+badd +5 StyleCat.gf
+badd +4 StyleCatAbs.gf
+badd +16 StyleRules.gf
+badd +7 Wiki.gf
+badd +6 WikiEdit.gf
+badd +0 WikiHint.gf
+badd +0 WikiMaster.gf
+badd +1 WikiParse.gf
+argglobal
+silent! argdel *
+argadd RuleAll.gf
+argadd RuleApproved.gf
+argadd RuleHint.gf
+argadd RuleToHint.gf
+argadd RuleToRGL.gf
+argadd StyleCat.gf
+argadd StyleCatAbs.gf
+argadd StyleRules.gf
+argadd Wiki.gf
+argadd WikiEdit.gf
+argadd WikiHint.gf
+argadd WikiMaster.gf
+argadd WikiParse.gf
+edit Wiki.gf
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+2wincmd k
+wincmd w
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+2wincmd k
+wincmd w
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 19 + 29) / 59)
+exe 'vert 1resize ' . ((&columns * 101 + 102) / 204)
+exe '2resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
+exe '3resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 101 + 102) / 204)
+exe '4resize ' . ((&lines * 19 + 29) / 59)
+exe 'vert 4resize ' . ((&columns * 102 + 102) / 204)
+exe '5resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 5resize ' . ((&columns * 102 + 102) / 204)
+exe '6resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 6resize ' . ((&columns * 102 + 102) / 204)
+argglobal
+edit Wiki.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 7 - ((4 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+7
+normal! 036|
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+argglobal
+edit ~/Documents/NLP/GF/lib/src/style/StyleCat.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 5 - ((4 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+5
+normal! 018|
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+argglobal
+edit ~/Documents/NLP/GF/lib/src/style/WikiParse.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 2 - ((1 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 0
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+argglobal
+edit ~/Documents/NLP/GF/lib/src/style/WikiEdit.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+argglobal
+edit ~/Documents/NLP/GF/lib/src/style/WikiHint.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 6 - ((5 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6
+normal! 0
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+argglobal
+edit ~/Documents/NLP/GF/lib/src/style/WikiMaster.gf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 10 - ((9 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 037|
+lcd ~/Documents/NLP/GF/lib/src/style
+wincmd w
+3wincmd w
+exe '1resize ' . ((&lines * 19 + 29) / 59)
+exe 'vert 1resize ' . ((&columns * 101 + 102) / 204)
+exe '2resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 101 + 102) / 204)
+exe '3resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 101 + 102) / 204)
+exe '4resize ' . ((&lines * 19 + 29) / 59)
+exe 'vert 4resize ' . ((&columns * 102 + 102) / 204)
+exe '5resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 5resize ' . ((&columns * 102 + 102) / 204)
+exe '6resize ' . ((&lines * 18 + 29) / 59)
+exe 'vert 6resize ' . ((&columns * 102 + 102) / 204)
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
