@@ -27,6 +27,7 @@
 #       ANTIGEN CONFIG
 # ================================
 
+# TODO needs to be changed every time the dotfiles are cloned to a new machine.
 source "$HOME/dotfiles/antigen/antigen.zsh"
 
 antigen use oh-my-zsh

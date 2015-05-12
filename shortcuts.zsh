@@ -37,7 +37,7 @@ moses=~/Documents/NLP/mosesdecoder
 
 # Study
 mlt=~/Documents/Courses/MLT
-tesi=~/Documents/Courses/MLT/12-Master\ Thesis
+tesi=~/Documents/Courses/MLT/12-Master-Thesis
 thesis=~/Documents/Courses/MLT/12-Master\ Thesis
 
 # Personal
