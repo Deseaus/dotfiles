@@ -56,7 +56,7 @@ function update_stuff {
 	echo '———> Running brew update...';
 	brew update;
 	echo '———> Running brew upgrade...';
-	brew upgrade;
+	brew upgrade --all;
 	echo '———> Running brew cleanup...';
 	brew cleanup;
 	echo '———> Running brew prune...';

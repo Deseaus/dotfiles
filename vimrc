@@ -36,7 +36,7 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
