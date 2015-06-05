@@ -8,9 +8,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 Chunk.gf
-badd +0 ChunkSpa.gf
+badd +56 Chunk.gf
+badd +1 ChunkSpa.gf
 badd +1 ChunkFunctor.gf
+badd +40 ~/Documents/NLP/GF/lib/src/abstract/Symbol.gf
 argglobal
 silent! argdel *
 argadd Chunk.gf
@@ -42,15 +43,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+let s:l = 53 - ((52 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+53
 normal! 0
+lcd ~/Documents/NLP/GF/lib/src/chunk
 wincmd w
 argglobal
-edit ChunkFunctor.gf
+edit ~/Documents/NLP/GF/lib/src/chunk/ChunkFunctor.gf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -60,12 +62,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 48 - ((35 * winheight(0) + 28) / 57)
+let s:l = 52 - ((51 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-48
-normal! 03|
+52
+normal! 0
 lcd ~/Documents/NLP/GF/lib/src/chunk
 wincmd w
 argglobal
@@ -79,12 +81,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 55 - ((54 * winheight(0) + 28) / 57)
+let s:l = 50 - ((49 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-55
+50
 normal! 0
+lcd ~/Documents/NLP/GF/lib/src/chunk
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 67 + 102) / 204)

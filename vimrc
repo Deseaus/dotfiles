@@ -40,6 +40,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
+Plug 'ludovicchabant/vim-gutentags'
 
 " ---------------------------------
 "       Unite Plugins
@@ -58,7 +59,7 @@ Plug 'mhinz/vim-startify'                 " Useful vim slash screen with session
 Plug 'bling/vim-airline'                  " Pretty status line TODO configure me
 Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
-"Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
+Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
 Plug 'junegunn/goyo.vim'                  " Easier writing
 
 call plug#end()
@@ -76,7 +77,7 @@ colorscheme solarized
 
 set backspace=indent,eol,start  " Allow backspace in all circumstances
 set history=10000                " Allow undo, remember last command with up
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.aux,*.gfo
 if has("persistent_undo")
     set undodir=~/.vim/undo
     set undofile
@@ -84,12 +85,14 @@ endif
 set undolevels=5000             " Use many levels of undo
 set undoreload=5000
 
-
 set mouse=a                     " Allow selection with the mouse in all mode
 set timeout timeoutlen=225 ttimeoutlen=150
 
 set nobackup
 set noswapfile
+
+set statusline+=%{gutentags#statusline()}
+" TODO this doesn't seem to work with airline...
 
 set ruler                       " Text in status bar shows cursor location
 set number                      " Line numbers on left-hand side
@@ -200,9 +203,9 @@ noremap K i<cr><esc>k$
 " Automatically source vimrc on save
 autocmd BufWritePost ~/.vimrc so ~/.vimrc
 
-" Call ctags automatically on write
-autocmd BufWritePost * call system("ctags -R --fields=+iaSnm --exclude=build
-            \ --exclude=.svn --exclude=.git --exclude=log --exclude=tmp .")
+"" Call ctags automatically on write
+"autocmd BufWritePost * call system("ctags -R --fields=+iaSnm --exclude=build
+"            \ --exclude=.svn --exclude=.git --exclude=log --exclude=tmp .")
 
 " Don't auto-insert a comment leader on the following line
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -231,13 +234,16 @@ let g:airline_powerline_fonts = 1
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+" Pretty: https://github.com/Shougo/unite.vim/issues/531
+call unite#custom#source( 'buffer', 'converters', ['converter_file_directory'])
 
 let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden'
+    let g:unite_source_grep_default_opts =
+                \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
 endif

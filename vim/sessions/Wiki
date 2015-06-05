@@ -12,15 +12,24 @@ badd +4 RuleAll.gf
 badd +1 RuleApproved.gf
 badd +1 RuleHint.gf
 badd +1 RuleToHint.gf
-badd +1 RuleToRGL.gf
+badd +4 RuleToRGL.gf
 badd +5 StyleCat.gf
 badd +4 StyleCatAbs.gf
 badd +16 StyleRules.gf
 badd +1 Wiki.gf
-badd +6 WikiEdit.gf
+badd +5 WikiEdit.gf
 badd +1 WikiHint.gf
 badd +1 WikiMaster.gf
-badd +1 WikiParse.gf
+badd +5 WikiParse.gf
+badd +27 ManualDeEstilo.gf
+badd +1 Seasons.gf
+badd +3 Season.gf
+badd +1 SeasonSpa.gf
+badd +5 PunctuationAbs.gf
+badd +5 Punctuation.gf
+badd +20 Typography.gf
+badd +1 List.gf
+badd +15 ListSpa.gf
 argglobal
 silent! argdel *
 argadd RuleAll.gf
@@ -36,44 +45,14 @@ argadd WikiEdit.gf
 argadd WikiHint.gf
 argadd WikiMaster.gf
 argadd WikiParse.gf
-edit Wiki.gf
+edit StyleRules.gf
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd _ | wincmd |
-split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
-wincmd w
-wincmd w
-wincmd _ | wincmd |
-split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 1resize ' . ((&columns * 71 + 72) / 144)
-exe '2resize ' . ((&lines * 7 + 14) / 29)
-exe 'vert 2resize ' . ((&columns * 71 + 72) / 144)
-exe '3resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 3resize ' . ((&columns * 71 + 72) / 144)
-exe '4resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 4resize ' . ((&columns * 72 + 72) / 144)
-exe '5resize ' . ((&lines * 7 + 14) / 29)
-exe 'vert 5resize ' . ((&columns * 72 + 72) / 144)
-exe '6resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 6resize ' . ((&columns * 72 + 72) / 144)
 argglobal
-edit Wiki.gf
+edit StyleRules.gf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -83,122 +62,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 7 - ((2 * winheight(0) + 4) / 9)
+let s:l = 12 - ((11 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
+12
 normal! 0
 lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/style/StyleCat.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 5 - ((2 * winheight(0) + 3) / 7)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-5
-normal! 018|
-lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/style/WikiParse.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 4) / 9)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-4
-normal! 0
-lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/style/WikiEdit.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 4) / 9)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/style/WikiHint.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 6 - ((2 * winheight(0) + 3) / 7)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-6
-normal! 0
-lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/style/WikiMaster.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 28 - ((2 * winheight(0) + 4) / 9)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-28
-normal! 069|
-lcd ~/Documents/NLP/GF/lib/src/style
-wincmd w
-6wincmd w
-exe '1resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 1resize ' . ((&columns * 71 + 72) / 144)
-exe '2resize ' . ((&lines * 7 + 14) / 29)
-exe 'vert 2resize ' . ((&columns * 71 + 72) / 144)
-exe '3resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 3resize ' . ((&columns * 71 + 72) / 144)
-exe '4resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 4resize ' . ((&columns * 72 + 72) / 144)
-exe '5resize ' . ((&lines * 7 + 14) / 29)
-exe 'vert 5resize ' . ((&columns * 72 + 72) / 144)
-exe '6resize ' . ((&lines * 9 + 14) / 29)
-exe 'vert 6resize ' . ((&columns * 72 + 72) / 144)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

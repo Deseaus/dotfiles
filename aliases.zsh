@@ -60,6 +60,7 @@ alias mailsize='du -hs ~/Library/mail'
 alias ttop='top -ocpu -R -F -s 2 -n30'		# Top processes
 
 alias tree='tree -AC'	                    # Print pretty lines colourise
+alias t='tree -AC'
 alias cp='cp -i'                            # Don't silently overwrite
 
 alias v='vim'

@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/Dani'
 let g:netrw_dirhist_2='/Users/Dani/dotfiles/antigen'
+let g:netrw_dirhist_3='/Users/Dani/Documents/Courses/MLT/12-Master-Thesis/styleguide/results'
+let g:netrw_dirhist_4='/Users/Dani/Documents/Courses/MLT/12-Master-Thesis/styleguide/results/aa11e959-5955-4c88-8355-b665ec1290a3'
+let g:netrw_dirhist_5='/Users/Dani/Documents/Courses/MLT/12-Master-Thesis/styleguide/results/test3'
+let g:netrw_dirhist_6='/Users/Dani/Documents/Courses/MLT/12-Master-Thesis/thesis'
