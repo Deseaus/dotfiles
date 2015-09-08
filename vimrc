@@ -243,7 +243,8 @@ let g:unite_source_grep_max_candidates = 200
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts =
-                \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
+                \ '-i --vimgrep --hidden --ignore ''.git'''
+                "\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
 endif
@@ -255,7 +256,8 @@ map [unite]f :Unite -no-split -buffer-name=files -start-insert file_rec/async<CR
 map [unite]b :Unite -no-split -buffer-name=buffers -quick-match buffer<CR>
 map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
 " NeoCompleteIncludeMakeCache included as per https://github.com/Shougo/unite.vim/issues/373
-map [unite]t :NeoCompleteIncludeMakeCache<CR>:Unite -no-split -buffer-name=tags-include tag/include<CR>
+"map [unite]t :NeoCompleteIncludeMakeCache<CR>:Unite -no-split -buffer-name=tags-include tag/include<CR>
+map [unite]t :Unite -no-split -buffer-name=tags-include tag/include<CR>
 map [unite]o :Unite -no-split -auto-preview -buffer-name=outline outline<CR>
 map [unite]oa :Unite -no-split -buffer-name=outline-all outline<CR>
 map [unite]h :Unite -no-split -auto-preview -buffer-name=unite-help help<CR>
@@ -266,6 +268,7 @@ map [unite]gd :Unite -no-split -auto-preview -buffer-name=grep-dir -start-insert
 " Ag in all buffers
 map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers grep:$buffers<CR>
 " Ag for todos
+" TODO not working, configuration must have changed
 map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\(TODO\|FIXME\)<CR>
 
 " ----------------------------------

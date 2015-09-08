@@ -34,7 +34,6 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
 
-    git
     python
     pip
     github
@@ -75,6 +74,8 @@ export PATH=/usr/local/bin:$PATH
 
 # Path to Haskell binaries
 export PATH=$PATH:/Users/Dani/Library/Haskell/bin
-export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.8.4/lib/gf-3.6.10/share/lib
+export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.10.2/lib/gf-3.7/share/lib
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
+
+source /Users/Dani/.iterm2_shell_integration.zsh
