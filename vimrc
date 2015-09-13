@@ -55,7 +55,7 @@ Plug 'Shougo/neocomplete.vim'
 " ---------------------------------
 "       Visual Plugins
 " ---------------------------------
-Plug 'mhinz/vim-startify'                 " Useful vim slash screen with sessions
+Plug 'mhinz/vim-startify'                 " Useful vim splash screen with sessions
 Plug 'bling/vim-airline'                  " Pretty status line TODO configure me
 Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
