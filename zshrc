@@ -40,9 +40,9 @@ antigen bundles <<EOBUNDLES
     brew
     osx
     extract
+    zsh-users/zsh-completions src
     zsh-users/zsh-syntax-highlighting
     zsh-users/zsh-history-substring-search
-    zsh-users/zsh-completions src
 
 EOBUNDLES
 

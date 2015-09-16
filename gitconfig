@@ -5,7 +5,7 @@
 	helper = osxkeychain
 [core]
 	excludesfile = /Users/Dani/.gitignore_global
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 [filter "media"]
 	clean = git-media-clean %f

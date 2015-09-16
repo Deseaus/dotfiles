@@ -74,6 +74,10 @@ export HISTSIZE=1000000 SAVEHIST=1000000 HISTFILE=~/.zhistory
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
+# Substring search
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # After vim Ctrl-Z to terminal, use Ctrl-Z again to enter vim
 # Must be placed AFTER vim bindings to work properly
 foreground-vi() {
