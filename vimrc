@@ -67,7 +67,7 @@ call plug#end()
 " =================================
 "           MAIN
 " =================================
-
+set shell=/bin/sh
 
 set guifont=Source\ Code\ Pro:h11
 syntax enable

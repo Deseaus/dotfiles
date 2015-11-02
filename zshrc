@@ -72,6 +72,9 @@ source "$HOME/dotfiles/shortcuts.zsh"
 # Path required for Homebrew and Virtualenv
 export PATH=/usr/local/bin:$PATH
 
+# For solarized-vim to work well on ubuntu
+export TERM='xterm-256color'
+
 # Path to Haskell binaries
 export PATH=$PATH:/Users/Dani/Library/Haskell/bin
 export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.10.2/lib/gf-3.7/share/lib
