@@ -81,4 +81,5 @@ export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.10.2/lib/gf-3.7/share/lib
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
-source /Users/Dani/.iterm2_shell_integration.zsh
+# TODO only for mac
+# source /Users/Dani/.iterm2_shell_integration.zsh
