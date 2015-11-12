@@ -66,6 +66,7 @@ alias cp='cp -i'                        # Don't silently overwrite
 alias v='vim'
 alias nv='nvim'
 alias novim='vim -u NONE'
+alias basicvim='vim -u ~/.basicvimrc'
 alias p='python'
 alias p3='python3'
 alias ip3='ipython3'
