@@ -65,6 +65,19 @@ function update_stuff {
 	brew doctor;
 }
 
+# Update antigen and homebrew
+function update_ubuntu {
+	echo '———> Updating antigen...';
+	antigen selfupdate;
+	echo '———> Updating antigen packages...';
+	antigen update;
+	echo '———> Cleaning antigen local packages...';
+	antigen cleanup;
+	echo '———> Upgrading apt-get...';
+    sudo apt-get upgrade;
+	echo '———> Updating apt-get...';
+    sudo apt-get update;
+}
 # Create a new SSH key
 function generate_ssh_key {
 	ssh-keygen -t rsa;
@@ -73,6 +86,6 @@ function generate_ssh_key {
 
 # mkdir & cd
 # https://www.reddit.com/r/commandline/comments/2jl8t8/what_are_your_funniest_or_most_useful_alias_in/clcrp3e
-function mcd {
+function mkd {
     mkdir -p "$1" && cd "$1"
 }
