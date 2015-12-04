@@ -53,15 +53,19 @@ alias ll='ls -lahoF ${colorflag}'	    # +Hidden
 alias lls='ls -lahSoF ${colorflag}'	    # +Hidden +Sort by size
 alias llt='ls -lahtoF ${colorflag}'	    # +Hidden +Sort by modified time
 
-alias llist='ls -m'                     # List files in a comma-separated line
-alias lllist='ls -ma'                   # List all files in a comma-separated line
-
 alias mailsize='du -hs ~/Library/mail'
 alias ttop='top -ocpu -R -F -s 2 -n30'  # Top processes
 
-alias tree='tree -AC'	                # Print pretty lines colourise
-alias t='tree -AC'
 alias cp='cp -i'                        # Don't silently overwrite
+
+# Redefine ls commands using tree
+alias t='tree -ACFh --du'	
+alias l='t -L 1 -D -g --filelimit 500'
+alias ll='l -a'
+alias lls='ll --sort=size'
+
+alias l2='l -L 2'
+alias ll2='ll -L 2'
 
 alias v='vim'
 alias nv='nvim'

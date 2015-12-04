@@ -48,3 +48,9 @@ dvhio=~/Documents/dvh-io
 me=~/Documents/Me
 dotfiles=~/dotfiles
 projects=~/Documents/Projects
+
+# Ferret
+dpa=~/dpa.events
+events=~/dpa.events/dpa/events
+cli=~/dpa.events/dpa/events/cli
+results=~/dpa.events/results

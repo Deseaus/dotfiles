@@ -50,7 +50,8 @@ setopt PUSHD_IGNORE_DUPS
 
 # Use vim to view man pages
 # http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
-export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
+# TODO fix under ubuntu
+#export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
 
 # ================================
 #       HISTORY
