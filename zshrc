@@ -41,8 +41,8 @@ antigen bundles <<EOBUNDLES
     osx
     extract
     zsh-users/zsh-completions src
-    zsh-users/zsh-syntax-highlighting
     zsh-users/zsh-history-substring-search
+    zsh-users/zsh-syntax-highlighting
 
 EOBUNDLES
 
@@ -54,7 +54,7 @@ antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 # ================================
 
 # ZSH hilighting configuration
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 
 antigen apply
 

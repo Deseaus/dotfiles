@@ -36,10 +36,11 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'davidhalter/jedi-vim'
+Plug 'klen/python-mode'
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'ludovicchabant/vim-gutentags'
 
 " ---------------------------------
@@ -61,6 +62,8 @@ Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
 Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
 Plug 'junegunn/goyo.vim'                  " Easier writing
+Plug 'elzr/vim-json'                      " Pretty JSON
+Plug 'christoomey/vim-tmux-navigator'     " Painless vim-tmux navigation
 
 call plug#end()
 
@@ -137,7 +140,7 @@ set listchars=eol:¬,tab:▸·,trail:·,nbsp:~
 
 " LEADER
 " Might as well use it since it's on my keyboard :)
-let mapleader = "ñ"
+let mapleader = ","
 
 " Exit to normal mode
 inoremap jj <Esc>
@@ -189,6 +192,9 @@ noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>p "*p
 noremap <leader>pp "*P
+
+" Insert ipdb breakpoint
+nnoremap <leader>d oimport ipdb; ipdb.set_trace()<Esc>k
 
 " Make Y consistent with C, D.
 nnoremap Y y$
@@ -242,8 +248,8 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts =
-                \ '-i --vimgrep --hidden --ignore ''.git'''
+"    let g:unite_source_grep_default_opts =
+"                \ '-i --vimgrep --hidden --ignore ''.git'''
                 "\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
