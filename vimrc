@@ -349,30 +349,37 @@ let g:gitgutter_map_keys = 0
 "           Pymode
 " ----------------------------------
 
-"let g:pymode_rope = 1
-"
-"" Documentation
-"let g:pymode_doc = 1
+" Rope
+let g:pymode_rope = 1
+"let g:pymode_rope_show_doc_bind = 'S'
+
+" Documentation
+let g:pymode_doc = 0
 "let g:pymode_doc_bind = 'S'
-"
-""Linting
-"let g:pymode_lint = 1
-"let g:pymode_lint_checker = "pyflakes,pep8"
-"" Auto check on save
-"let g:pymode_lint_write = 1
-"let g:pymode_folding = 0
-"
-"" Support virtualenv
-"
+
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = ['pyflakes', 'pep8', 'mccabe', 'pylint', 'pep257']
+" Auto check on save
+let g:pymode_lint_write = 1
+let g:pymode_lint_message = 1
+let g:pymode_lint_cwindow = 1
+
+" Syntax
+let g:pymode_syntax_print_as_function = 1
+
+" Support virtualenv
 "let g:pymode_python = 'python3'
-"let g:pymode = 1
-"let g:pymode_trim_whitespaces = 1
-"let g:pymode_options = 1
-"let g:pymode_quickfix_minheight = 3
-"let g:pymode_quickfix_maxheight = 6
-"let g:pymode_virtualenv = 1
-"let g:pymode_run = 1
-""let g:pymode_run_bind = '<leader>r' "Conflict with Goyo!
+let g:pymode = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_folding = 0
+let g:pymode_options = 1
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_virtualenv = 1
+let g:pymode_run = 1
+let g:pymode_motion = 1
+let g:pymode_run_bind = '<leader>rr' "TODO Fix, onlt r conflicts with Goyo
 
 " ----------------------------------
 "           Goyo
@@ -420,31 +427,3 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-
-" TODO FIXME Neocomplete + jedi-vim
-
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-"let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" alternative pattern: '\h\w*\|[^. \t]\.\w*'
-
-" ----------------------------------
-"        Jedi
-" ----------------------------------
-
-"let g:jedi#auto_vim_configuration = 0
-
-"let g:jedi#completions_command = "<C-N>"
-let g:jedi#completions_command = ""
-let g:jedi#usages_command = "<leader>m"
-let g:jedi#documentation_command = "<leader>s"
-let g:jedi#rename_command = ""
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-
-"let g:jedi#popup_select_first = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#use_splits_not_buffers = "top"
-let g:jedi#force_py_version = 3
-let g:jedi#popup_select_first = 0
