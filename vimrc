@@ -149,6 +149,8 @@ inoremap kj <Esc>
 
 " Open vertical split window and move to it
 nnoremap <leader>w <C-w>v<C-w>l
+" Open horiztonal split window and move to it
+nnoremap <leader>W <C-w>s<C-w>l
 
 " Open newlines above or below without entering insert mode.
 nnoremap OO m'O<ESC><C-o>
@@ -248,8 +250,9 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
-"    let g:unite_source_grep_default_opts =
-"                \ '-i --vimgrep --hidden --ignore ''.git'''
+    let g:unite_source_grep_default_opts =
+                \ '-i --vimgrep --hidden --ignore ' .
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
                 "\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
@@ -305,6 +308,7 @@ let g:startify_custom_indices = ['f', 'g', 'h']
 let g:startify_bookmarks = [
             \ '~/dotfiles/vimrc',
             \ '~/dotfiles/zshrc',
+            \ '~/dotfiles/tmux.conf',
             \ '~/dotfiles/general.zsh',
             \ '~/dotfiles/aliases.zsh',
             \ '~/dotfiles/functions.zsh',
@@ -352,6 +356,8 @@ let g:gitgutter_map_keys = 0
 " Rope
 let g:pymode_rope = 1
 "let g:pymode_rope_show_doc_bind = 'S'
+let g:pymode_rope_goto_definition_bind = ''
+let g:pymode_rope_complete_on_dot = 0
 
 " Documentation
 let g:pymode_doc = 0
