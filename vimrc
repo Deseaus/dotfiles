@@ -51,6 +51,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
 Plug 'Shougo/unite-help'
 Plug 'tsukkee/unite-tag'
+Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/neocomplete.vim'
 
 " ---------------------------------
@@ -281,6 +282,8 @@ map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers grep:$buf
 " Ag for todos
 " TODO not working, configuration must have changed
 map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\(TODO\|FIXME\)<CR>
+map [unite]d :VimFiler<CR>
+
 
 " ----------------------------------
 "        Startify
