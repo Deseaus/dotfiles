@@ -372,6 +372,7 @@ let g:pymode_lint_checker = ['pyflakes', 'pep8', 'mccabe', 'pylint', 'pep257']
 let g:pymode_lint_write = 1
 let g:pymode_lint_message = 1
 let g:pymode_lint_cwindow = 1
+let g:pymode_lint_sort = ['E', 'C', 'I']
 
 " Syntax
 let g:pymode_syntax_print_as_function = 1
