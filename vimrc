@@ -253,9 +253,11 @@ if executable('ag')
     let g:unite_source_grep_default_opts =
                 \ '-i --vimgrep --hidden --ignore ' .
                 \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-                "\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ''.git'''
     let g:unite_source_grep_recursive_opt = ''
-    let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+    "let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+    let g:unite_source_rec_async_command =
+                \ ['ag', '--follow', '--nocolor', '--nogroup',
+                \  '--hidden', '-g', '']
 endif
 
 nnoremap [unite] <Nop>
@@ -267,8 +269,8 @@ map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
 " NeoCompleteIncludeMakeCache included as per https://github.com/Shougo/unite.vim/issues/373
 "map [unite]t :NeoCompleteIncludeMakeCache<CR>:Unite -no-split -buffer-name=tags-include tag/include<CR>
 map [unite]t :Unite -no-split -buffer-name=tags-include tag/include<CR>
-map [unite]o :Unite -no-split -auto-preview -buffer-name=outline outline<CR>
-map [unite]oa :Unite -no-split -buffer-name=outline-all outline<CR>
+"map [unite]o :Unite -no-split -auto-preview -buffer-name=outline outline<CR>
+map [unite]o :Unite -no-split -buffer-name=outline-all outline<CR>
 map [unite]h :Unite -no-split -auto-preview -buffer-name=unite-help help<CR>
 " Ag in current file (better than grep:%)
 map [unite]gf :Unite -no-split -auto-preview -buffer-name=grep-file -start-insert line<CR>
