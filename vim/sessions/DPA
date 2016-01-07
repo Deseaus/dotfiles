@@ -8,11 +8,18 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 tagging.py
+badd +348 tagging.py
 badd +45 cli/preprocess.py
-badd +186 preprocessing.py
+badd +170 preprocessing.py
 badd +118 models.py
-badd +2 cli/run.py
+badd +44 cli/run.py
+badd +13 vimfiler:default
+badd +371 ~/dotfiles/vim/plugged/vimfiler.vim/doc/vimfiler.txt
+badd +453 ~/.vimrc
+badd +20 vimfiler:default@1
+badd +204 evaluation.py
+badd +64 pipeline.py
+badd +277 converters.py
 argglobal
 silent! argdel *
 edit cli/run.py
@@ -31,11 +38,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 28) / 57)
+let s:l = 229 - ((51 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+229
 normal! 0
 tabnext 1
 if exists('s:wipebuf')

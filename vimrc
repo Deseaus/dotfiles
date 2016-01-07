@@ -284,6 +284,12 @@ map [unite]gb :Unite -no-split -auto-preview -buffer-name=grep-buffers grep:$buf
 map [unite]gt :Unite -no-split -auto-preview -buffer-name=grep-todos grep:.:-s:\(TODO\|FIXME\)<CR>
 map [unite]d :VimFiler<CR>
 
+" ----------------------------------
+"        VimFiler
+" ----------------------------------
+
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = ['^\.', '^\.git$', '^\.DS_Store$', '^\*.pyc']
 
 " ----------------------------------
 "        Startify
@@ -439,3 +445,9 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" ----------------------------------
+"        VimFiler
+" ----------------------------------
+
+let g:vimfiler_ignore_pattern = ['*pyc']

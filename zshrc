@@ -83,3 +83,6 @@ export LANG=en_GB.UTF-8
 
 # TODO only for mac
 # source /Users/Dani/.iterm2_shell_integration.zsh
+
+# Autoenv functionality
+source ~/.autoenv/activate.sh

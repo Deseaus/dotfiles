@@ -1,0 +1,25 @@
+pane	Dotfiles	1	:zsh	1	:*	1	:/home/daniel/dotfiles	1	zsh	:
+pane	Elastic	1	:zsh	1	:*	1	:/home/daniel/elastic	1	zsh	:
+pane	Elastic	1	:zsh	1	:*	2	:/home/daniel/elasticsearch-2.1.0	0	zsh	:
+pane	Elastic	1	:zsh	1	:*	3	:/home/daniel/elastic	0	zsh	:
+pane	Elastic	1	:zsh	1	:*	4	:/home/daniel/kibana	0	zsh	:
+pane	Evaluation	1	:EVAL	1	:*	1	:/home/daniel/dpa.events	0	zsh	:
+pane	Evaluation	1	:EVAL	1	:*	2	:/home/daniel/dpa.events	1	zsh	:
+pane	HTOP	1	:htop	1	:*	1	:/home/daniel/dpa.events	1	htop	:htop
+pane	LEARN-SSH	1	:zsh	1	:*	1	:/home/daniel/dpa.events	1	zsh	:
+pane	Review-FX	1	:python	1	:*	1	:/home/daniel/fb_review	1	python	:/home/daniel/fb_review/env/bin/python /home/daniel/fb_review/env/bin/scrapy shell https://www.facebook.com/sanktoberholz/reviews
+pane	Review-FX	2	:vim	0	:	1	:/home/daniel/dpa.events	1	vim	:vim Makefile
+pane	Review-FX	3	:vim	0	:-	1	:/home/daniel/fb_review	1	vim	:vim fetcher.py
+pane	Training	1	:zsh	1	:*	1	:/home/daniel/dpa.events	1	zsh	:
+pane	VIM	2	:zsh	1	:*	1	:/home/daniel/dpa.events	1	zsh	:
+window	Dotfiles	1	1	:*	d45d,274x59,0,0,0
+window	Elastic	1	1	:*	7d90,274x59,0,0{136x59,0,0[136x29,0,0,1,136x29,0,30,2],137x59,137,0[137x29,137,0,3,137x29,137,30,4]}
+window	Evaluation	1	1	:*	f117,80x23,0,0{40x23,0,0,5,39x23,41,0,6}
+window	HTOP	1	1	:*	d464,274x59,0,0,7
+window	LEARN-SSH	1	1	:*	ae65,80x23,0,0,8
+window	Review-FX	1	1	:*	ea60,274x59,0,0,21
+window	Review-FX	2	0	:	6a62,274x59,0,0,13
+window	Review-FX	3	0	:-	6a68,274x59,0,0,19
+window	Training	1	1	:*	ae66,80x23,0,0,9
+window	VIM	2	1	:*	6a5f,274x59,0,0,10
+state	Review-FX	
