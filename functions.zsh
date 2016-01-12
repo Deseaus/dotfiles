@@ -46,7 +46,7 @@ function myip {
 }
 
 # Update antigen and homebrew
-function update_stuff {
+function update_mac {
 	echo '———> Updating antigen...';
 	antigen selfupdate;
 	echo '———> Updating antigen packages...';
@@ -65,7 +65,7 @@ function update_stuff {
 	brew doctor;
 }
 
-# Update antigen and homebrew
+# Update antigen and apt-get
 function update_ubuntu {
 	echo '———> Updating antigen...';
 	antigen selfupdate;
@@ -73,11 +73,18 @@ function update_ubuntu {
 	antigen update;
 	echo '———> Cleaning antigen local packages...';
 	antigen cleanup;
-	echo '———> Upgrading apt-get...';
-    sudo apt-get upgrade;
-	echo '———> Updating apt-get...';
+	echo '———> Running apt-get update...';
     sudo apt-get update;
+	echo '———> Running apt-get dist-upgrade...';
+    sudo apt-get dist-upgrade;
+	echo '———> Cleaning unused packages with apt-get autoclean...';
+    sudo apt-get autoclean;
+	echo '———> Cleaning unused dependencies with apt-get autoremove...';
+    sudo apt-get autoremove;
+	echo '———> Checking with apt-get check...';
+    sudo apt-get check;
 }
+
 # Create a new SSH key
 function generate_ssh_key {
 	ssh-keygen -t rsa;
