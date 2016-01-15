@@ -76,8 +76,8 @@ export PATH=/usr/local/bin:$PATH
 export TERM='xterm-256color'
 
 # Path to Haskell binaries
-export PATH=$PATH:/Users/Dani/Library/Haskell/bin
-export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.10.2/lib/gf-3.7/share/lib
+#export PATH=$PATH:/Users/Dani/Library/Haskell/bin
+#export GF_LIB_PATH=/Users/Dani/Library/Haskell/ghc-7.10.2/lib/gf-3.7/share/lib
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
@@ -85,4 +85,9 @@ export LANG=en_GB.UTF-8
 # source /Users/Dani/.iterm2_shell_integration.zsh
 
 # Autoenv functionality
-source ~/.autoenv/activate.sh
+#source ~/.autoenv/activate.sh
+
+# Pyenv
+export PATH="/home/daniel/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
