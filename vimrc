@@ -58,7 +58,7 @@ Plug 'Shougo/neocomplete.vim'
 "       Visual Plugins
 " ---------------------------------
 Plug 'mhinz/vim-startify'                 " Useful vim splash screen with sessions
-Plug 'bling/vim-airline'                  " Pretty status line TODO configure me
+Plug 'vim-airline/vim-airline'                  " Pretty status line TODO configure me
 Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
 Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
@@ -94,6 +94,8 @@ set timeout timeoutlen=225 ttimeoutlen=150
 
 set nobackup
 set noswapfile
+
+set clipboard=unnamedplus       " Yank to the OS X clipboard
 
 set statusline+=%{gutentags#statusline()}
 " TODO this doesn't seem to work with airline...
@@ -190,11 +192,11 @@ nnoremap <leader>n :nohl<CR>
 "List hidden chars
 nnoremap <leader>h :set list!<CR>
 
-" Yank text to the OS X clipboard
-noremap <leader>y "*y
-noremap <leader>yy "*Y
-noremap <leader>p "*p
-noremap <leader>pp "*P
+"" Yank text to the linux clipboard
+"noremap <leader>y "+y
+"noremap <leader>yy "+Y
+"noremap <leader>p "+p
+"noremap <leader>pp "+P
 
 " Insert ipdb breakpoint
 nnoremap <leader>d oimport ipdb; ipdb.set_trace()<Esc>k
