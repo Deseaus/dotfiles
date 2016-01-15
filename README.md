@@ -33,10 +33,14 @@ Some of the pronounced notes of obsessive simplicty and Python indentation come 
 
 ### Vim
 
-* Plugins managed by [Vundle](https://github.com/gmarik/Vundle.vim).
+* Plugins managed by [VimPlug](https://github.com/junegunn/vim-plug).
 * [Unite](https://github.com/Shougo/unite.vim) and an [Ag](https://github.com/ggreer/the_silver_searcher) backend to power searches of all kinds.
 * [Startify](https://github.com/mhinz/vim-startify) to open up Vim with nice ASCII art, sessions and bookmarks.
 
+## Tmux
+
+* Plugins managed by [TPM](https://github.com/tmux-plugins/tpm)
+
 ## Licence
 
-The MIT License (MIT) Copyright © 2014 Daniel Vidal Hussey 
+The MIT License (MIT) Copyright © 2014-2016 Daniel Vidal Hussey 
