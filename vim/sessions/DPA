@@ -9,20 +9,21 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +348 tagging.py
-badd +45 cli/preprocess.py
-badd +170 preprocessing.py
+badd +30 cli/preprocess.py
+badd +35 preprocessing.py
 badd +118 models.py
-badd +44 cli/run.py
+badd +206 cli/run.py
 badd +13 vimfiler:default
-badd +371 ~/dotfiles/vim/plugged/vimfiler.vim/doc/vimfiler.txt
-badd +453 ~/.vimrc
+badd +372 ~/dotfiles/vim/plugged/vimfiler.vim/doc/vimfiler.txt
+badd +156 ~/.vimrc
 badd +20 vimfiler:default@1
 badd +204 evaluation.py
 badd +64 pipeline.py
 badd +277 converters.py
+badd +1 \[Plugins]
 argglobal
 silent! argdel *
-edit cli/run.py
+edit \[Plugins]
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -38,12 +39,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 206 - ((28 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-206
+1
 normal! 0
+lcd ~/dpa.events/dpa/events
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

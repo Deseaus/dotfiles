@@ -78,6 +78,8 @@ alias g='git'
 
 alias h='history'
 
+# Pretty print JSON
+alias pjson='python -m json.tool'
 
 alias please='sudo $(fc -ln -1)'        # http://unix.stackexchange.com/a/158480
 

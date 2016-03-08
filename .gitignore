@@ -1,4 +1,8 @@
 .DS_Store
-vim/undo/**
-tmux/resurrect/**
 tags
+
+# Vim ignores
+vim/undo/**
+vim/sessions/**
+vim/plugged/**
+tmux/resurrect/**

@@ -58,7 +58,8 @@ Plug 'Shougo/neocomplete.vim'
 "       Visual Plugins
 " ---------------------------------
 Plug 'mhinz/vim-startify'                 " Useful vim splash screen with sessions
-Plug 'vim-airline/vim-airline'                  " Pretty status line TODO configure me
+Plug 'vim-airline/vim-airline'            " Pretty status line
+Plug 'vim-airline/vim-airline-themes'    " Airline themes
 Plug 'altercation/vim-colors-solarized'   " Handsome vim
 Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
 Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
@@ -153,7 +154,7 @@ inoremap kj <Esc>
 " Open vertical split window and move to it
 nnoremap <leader>w <C-w>v<C-w>l
 " Open horiztonal split window and move to it
-nnoremap <leader>W <C-w>s<C-w>l
+nnoremap <leader>e <C-w>s<C-w>l
 
 " Open newlines above or below without entering insert mode.
 nnoremap OO m'O<ESC><C-o>
@@ -254,7 +255,7 @@ let g:unite_source_grep_max_candidates = 200
 if executable('ag')
     let g:unite_source_grep_command = 'ag'
     let g:unite_source_grep_default_opts =
-                \ '-i --vimgrep --hidden --ignore ' .
+                \ '-i --vimgrep --ignore ' .
                 \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
     let g:unite_source_grep_recursive_opt = ''
     "let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
@@ -267,6 +268,7 @@ nnoremap [unite] <Nop>
 nmap <space> [unite]
 
 map [unite]f :Unite -no-split -buffer-name=files -start-insert file_rec/async<CR>
+map [unite]n :Unite -no-split -buffer-name=files -start-insert file_rec/git<CR>
 map [unite]b :Unite -no-split -buffer-name=buffers -quick-match buffer<CR>
 map [unite]y :Unite -no-split -buffer-name=yanks history/yank<CR>
 " NeoCompleteIncludeMakeCache included as per https://github.com/Shougo/unite.vim/issues/373

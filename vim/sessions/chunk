@@ -3,15 +3,17 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Documents/NLP/GF/lib/src/chunk
+cd ~/dpa.events
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +56 Chunk.gf
+badd +1 Chunk.gf
 badd +1 ChunkSpa.gf
 badd +1 ChunkFunctor.gf
 badd +40 ~/Documents/NLP/GF/lib/src/abstract/Symbol.gf
+badd +0 ~/Documents/NLP/GF/lib/src/chunk/ChunkFunctor.gf
+badd +0 ~/Documents/NLP/GF/lib/src/chunk/ChunkSpa.gf
 argglobal
 silent! argdel *
 argadd Chunk.gf
@@ -19,21 +21,12 @@ argadd ChunkSpa.gf
 argadd ChunkFunctor.gf
 edit Chunk.gf
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 68 + 102) / 204)
-exe 'vert 3resize ' . ((&columns * 67 + 102) / 204)
 argglobal
+edit Chunk.gf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -43,56 +36,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 53 - ((52 * winheight(0) + 28) / 57)
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-53
+1
 normal! 0
-lcd ~/Documents/NLP/GF/lib/src/chunk
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/chunk/ChunkFunctor.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 52 - ((51 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-52
-normal! 0
-lcd ~/Documents/NLP/GF/lib/src/chunk
-wincmd w
-argglobal
-edit ~/Documents/NLP/GF/lib/src/chunk/ChunkSpa.gf
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 50 - ((49 * winheight(0) + 28) / 57)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-50
-normal! 0
-lcd ~/Documents/NLP/GF/lib/src/chunk
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 68 + 102) / 204)
-exe 'vert 3resize ' . ((&columns * 67 + 102) / 204)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
