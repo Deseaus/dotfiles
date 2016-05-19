@@ -174,8 +174,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Move lines visually
-nnoremap k gk
-nnoremap j gj
+" http://stackoverflow.com/questions/20975928/moving-the-cursor-through-long-soft-wrapped-lines-in-vim/21000307#21000307
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Use space-space to toggle folds
 nnoremap  <Space><Space> za
@@ -200,12 +201,6 @@ nnoremap <leader>n :nohl<CR>
 "List hidden chars
 nnoremap <leader>h :set list!<CR>
 
-"" Yank text to the linux clipboard
-"noremap <leader>y "+y
-"noremap <leader>yy "+Y
-"noremap <leader>p "+p
-"noremap <leader>pp "+P
-
 " Insert ipdb breakpoint
 nnoremap <leader>d oimport ipdb; ipdb.set_trace()<Esc>k
 
@@ -222,15 +217,12 @@ noremap K i<cr><esc>k$
 " Automatically source vimrc on save
 autocmd BufWritePost ~/.vimrc so ~/.vimrc
 
-"" Call ctags automatically on write
-"autocmd BufWritePost * call system("ctags -R --fields=+iaSnm --exclude=build
-"            \ --exclude=.svn --exclude=.git --exclude=log --exclude=tmp .")
-
 " Don't auto-insert a comment leader on the following line
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " Auto-resize splits http://stackoverflow.com/questions/2519582/preserving-equal-sized-split-view
 autocmd VimResized * wincmd =
+
 " =================================
 "       PLUGIN CONFIG
 " =================================
@@ -302,7 +294,13 @@ map [unite]d :VimFiler<CR>
 " ----------------------------------
 
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = ['^\.', '^\.git$', '^\.DS_Store$', '^\*.pyc']
+let g:vimfiler_ignore_pattern = [
+            \ '^\.',
+            \ '^\.git$',
+            \ '^\lib$',
+            \ '^\.DS_Store$',
+            \ '^\*.pyc'
+            \ ]
 
 " ----------------------------------
 "        Startify
