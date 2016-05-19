@@ -29,6 +29,13 @@ set nocompatible              " Don't be compatible with Vi
 "           PLUGINS
 " =================================
 
+" Automatically install Vim plug if it isn't installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " ---------------------------------
@@ -57,15 +64,16 @@ Plug 'Shougo/neocomplete.vim'
 " ---------------------------------
 "       Visual Plugins
 " ---------------------------------
-Plug 'mhinz/vim-startify'                 " Useful vim splash screen with sessions
-Plug 'vim-airline/vim-airline'            " Pretty status line
-Plug 'vim-airline/vim-airline-themes'    " Airline themes
-Plug 'altercation/vim-colors-solarized'   " Handsome vim
-Plug 'airblade/vim-gitgutter'             " Show git diff marks in gutter
-Plug 'ConradIrwin/vim-bracketed-paste'    " Make pasting from OS work properly
-Plug 'junegunn/goyo.vim'                  " Easier writing
-Plug 'elzr/vim-json'                      " Pretty JSON
-Plug 'christoomey/vim-tmux-navigator'     " Painless vim-tmux navigation
+Plug 'mhinz/vim-startify'               " Useful vim splash screen with sessions
+Plug 'vim-airline/vim-airline'          " Pretty status line
+Plug 'vim-airline/vim-airline-themes'   " Airline themes
+Plug 'altercation/vim-colors-solarized' " Handsome vim
+Plug 'airblade/vim-gitgutter'           " Show git diff marks in gutter
+"Plug 'ConradIrwin/vim-bracketed-paste' " Make pasting from OS work properly
+Plug 'junegunn/goyo.vim'                " Easier writing
+Plug 'elzr/vim-json'                    " Pretty JSON
+Plug 'mitsuhiko/vim-python-combined'    " Better python syntax
+Plug 'christoomey/vim-tmux-navigator'   " Painless vim-tmux navigation
 
 call plug#end()
 
@@ -82,7 +90,7 @@ colorscheme solarized
 
 set backspace=indent,eol,start  " Allow backspace in all circumstances
 set history=10000                " Allow undo, remember last command with up
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.aux,*.gfo
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.aux,*.gfo,*.dll,*.o,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib
 if has("persistent_undo")
     set undodir=~/.vim/undo
     set undofile
@@ -96,7 +104,7 @@ set timeout timeoutlen=225 ttimeoutlen=150
 set nobackup
 set noswapfile
 
-set clipboard=unnamedplus       " Yank to the OS X clipboard
+set clipboard=unnamedplus       " Yank to clipboard
 
 set statusline+=%{gutentags#statusline()}
 " TODO this doesn't seem to work with airline...
@@ -143,7 +151,6 @@ set listchars=eol:¬,tab:▸·,trail:·,nbsp:~
 " =================================
 
 " LEADER
-" Might as well use it since it's on my keyboard :)
 let mapleader = ","
 
 " Exit to normal mode
@@ -173,7 +180,7 @@ nnoremap j gj
 " Use space-space to toggle folds
 nnoremap  <Space><Space> za
 
-" Q quits the window
+" Q quits the window, will complain if there are unsaved changes
 nnoremap Q :q<CR>
 
 " +/-: Increment number on the line
@@ -222,6 +229,8 @@ autocmd BufWritePost ~/.vimrc so ~/.vimrc
 " Don't auto-insert a comment leader on the following line
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
+" Auto-resize splits http://stackoverflow.com/questions/2519582/preserving-equal-sized-split-view
+autocmd VimResized * wincmd =
 " =================================
 "       PLUGIN CONFIG
 " =================================
@@ -328,6 +337,7 @@ let g:startify_bookmarks = [
             \ '~/dotfiles/aliases.zsh',
             \ '~/dotfiles/functions.zsh',
             \ '~/dotfiles/shortcuts.zsh',
+            \ '~/.ssh/config',
             \]
 let g:startify_files_number = 8
 let g:startify_session_autoload = 1         " Load session if in bookmarked dir

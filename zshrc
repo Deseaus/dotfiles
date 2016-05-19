@@ -40,6 +40,7 @@ antigen bundles <<EOBUNDLES
     brew
     osx
     extract
+    docker
     zsh-users/zsh-completions src
     zsh-users/zsh-history-substring-search
     zsh-users/zsh-syntax-highlighting
@@ -87,7 +88,7 @@ export LANG=en_GB.UTF-8
 # Autoenv functionality
 #source ~/.autoenv/activate.sh
 
-export PATH="/home/daniel/miniconda3/bin:$PATH"
+#export PATH="/home/daniel/miniconda2/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
 ## Pyenv
 #export PATH="/home/daniel/.pyenv/bin:$PATH"

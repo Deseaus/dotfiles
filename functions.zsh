@@ -87,7 +87,7 @@ function update_ubuntu {
 
 # Create a new SSH key
 function generate_ssh_key {
-	ssh-keygen -t rsa;
+	ssh-keygen -t rsa -C "daniel.vidal.hussey@gmail.com" -f main_key;
 	cat ~/.ssh/id_rsa.pub;
 }
 

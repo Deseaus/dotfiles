@@ -71,6 +71,7 @@ alias v='vim'
 alias nv='nvim'
 alias novim='vim -u NONE'
 alias basicvim='vim -u ~/.basicvimrc'
+alias simplevim='vim -u ~/.basicvimrc'
 alias p='python'
 alias p3='python3'
 alias ip3='ipython3'
@@ -80,6 +81,7 @@ alias h='history'
 
 # Pretty print JSON
 alias pjson='python -m json.tool'
+alias pp='jq .'
 
 alias please='sudo $(fc -ln -1)'        # http://unix.stackexchange.com/a/158480
 
