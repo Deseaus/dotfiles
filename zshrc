@@ -36,52 +36,42 @@ fi
 # Essential
 source ~/.zplug/init.zsh
 
+zplug "robbyrussell/oh-my-zsh"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/brew", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
+setopt prompt_subst
+zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme
 zplug "caiogondim/bullet-train-oh-my-zsh-theme"
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
 
 # Then, source packages and add commands to $PATH
 zplug load --verbose
-
-# TODO needs to be changed every time the dotfiles are cloned to a new machine.
-#source "$HOME/dotfiles/antigen/antigen.zsh"
-#
-#antigen use oh-my-zsh
-#
-#antigen bundles <<EOBUNDLES
-#
-#    python
-#    pip
-#    github
-#    brew
-#    osx
-#    extract
-#    docker
-#    zsh-users/zsh-completions src
-#    zsh-users/zsh-history-substring-search
-#    zsh-users/zsh-syntax-highlighting
-#
-#EOBUNDLES
-#
-## Use the Bullet Train theme
-#antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
 # ================================
 #       PLUGIN CONFIG
 # ================================
 
 # ZSH hilighting configuration
-#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
-#
-#antigen apply
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+
 
 
 # ================================
@@ -98,7 +88,7 @@ source "$HOME/dotfiles/shortcuts.zsh"
 export PATH=/usr/local/bin:$PATH
 
 # For solarized-vim to work well on ubuntu
-export TERM='xterm-256color'
+export TERM="xterm-256color"
 
 # Path to Haskell binaries
 #export PATH=$PATH:/Users/Dani/Library/Haskell/bin

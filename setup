@@ -60,6 +60,14 @@ install_vim_plug () {
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
+
+install_zplug () {
+    curl -sL get.zplug.sh | zsh
+}
+
+# TODO only work if we have curl!!!! brew it!!!
+
 # TODO get this function working properly
 install_vim_plug
+install_zplug
 #install_zsh
