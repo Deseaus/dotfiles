@@ -27,37 +27,61 @@
 #       ANTIGEN CONFIG
 # ================================
 
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+
+# Essential
+source ~/.zplug/init.zsh
+
+zplug "plugins/python", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/github", from:oh-my-zsh
+zplug "plugins/brew", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "caiogondim/bullet-train-oh-my-zsh-theme"
+
+# Then, source packages and add commands to $PATH
+zplug load --verbose
+
 # TODO needs to be changed every time the dotfiles are cloned to a new machine.
-source "$HOME/dotfiles/antigen/antigen.zsh"
-
-antigen use oh-my-zsh
-
-antigen bundles <<EOBUNDLES
-
-    python
-    pip
-    github
-    brew
-    osx
-    extract
-    docker
-    zsh-users/zsh-completions src
-    zsh-users/zsh-history-substring-search
-    zsh-users/zsh-syntax-highlighting
-
-EOBUNDLES
-
-# Use the Bullet Train theme
-antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+#source "$HOME/dotfiles/antigen/antigen.zsh"
+#
+#antigen use oh-my-zsh
+#
+#antigen bundles <<EOBUNDLES
+#
+#    python
+#    pip
+#    github
+#    brew
+#    osx
+#    extract
+#    docker
+#    zsh-users/zsh-completions src
+#    zsh-users/zsh-history-substring-search
+#    zsh-users/zsh-syntax-highlighting
+#
+#EOBUNDLES
+#
+## Use the Bullet Train theme
+#antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
 # ================================
 #       PLUGIN CONFIG
 # ================================
 
 # ZSH hilighting configuration
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
-
-antigen apply
+#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+#
+#antigen apply
 
 
 # ================================
@@ -94,3 +118,6 @@ export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
 #export PATH="/home/daniel/.pyenv/bin:$PATH"
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
+
+# Set up docker to use the default boot2docker on OS X
+#eval "$(docker-machine env default)"

@@ -106,9 +106,6 @@ set noswapfile
 
 set clipboard=unnamedplus       " Yank to clipboard
 
-set statusline+=%{gutentags#statusline()}
-" TODO this doesn't seem to work with airline...
-
 set ruler                       " Text in status bar shows cursor location
 set number                      " Line numbers on left-hand side
 set showcmd                     " Update status line when selecting text
