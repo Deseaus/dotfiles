@@ -45,14 +45,12 @@ function myip {
 	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
-# Update antigen and homebrew
+# Update zplug and homebrew
 function update_mac {
-	echo '———> Updating antigen...';
-	antigen selfupdate;
-	echo '———> Updating antigen packages...';
-	antigen update;
-	echo '———> Cleaning antigen local packages...';
-	antigen cleanup;
+	echo '———> Updating zplug...';
+    zplug update --self
+	echo '———> Updating zplug packages...';
+	zplug update
 	echo '———> Running brew update...';
 	brew update;
 	echo '———> Running brew upgrade...';

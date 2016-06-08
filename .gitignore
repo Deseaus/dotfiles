@@ -3,6 +3,7 @@ tags
 
 # Vim ignores
 vim/undo/**
+vim/autoload/**
 vim/sessions/**
 vim/plugged/**
 tmux/resurrect/**

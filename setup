@@ -62,12 +62,16 @@ install_vim_plug () {
 
 
 install_zplug () {
+    # Zplug: manage zsh plugins
     curl -sL get.zplug.sh | zsh
 }
 
-# TODO only work if we have curl!!!! brew it!!!
+install_tpm () {
+    # tmux Package manager
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
 
-# TODO get this function working properly
 install_vim_plug
 install_zplug
+install_tpm
 #install_zsh
