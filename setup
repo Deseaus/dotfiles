@@ -3,75 +3,66 @@
 # Original script from https://github.com/aharris88/dotfiles
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 
-# Variables
 
 dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+backupdir=~/dotfiles_backup          # old dotfiles backup directory
 
-# List of files/folders to symlink in homedir
-files="gitconfig gitignore_global agignore antigen vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc"
+# Files/dirs to symlink to ~
+homefiles="gitconfig gitignore_global agignore antigen vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc"
+configfiles="htoprc"
 
-# Create dotfiles_old in homedir
-echo "Install dotfiles"
-echo "================"
+echo "==================="
+echo "Installing dotfiles"
+echo "==================="
 echo " "
-echo "1. Creating $olddir to backup any existing dotfiles in ~ ..."
-mkdir -p $olddir
+echo "1. Creating $backupdir to backup any existing dotfiles in ~ ..."
+mkdir -p $backupdir
+mkdir -p ~/dotfiles_old/config
 
 # Change to the dotfiles directory
-echo "2. Changing to the $dir directory..."
 cd $dir
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-echo "3. Installing..."
-for file in $files; do
+for file in $homefiles; do
     echo " "
-    echo "Moving $file from ~ to $olddir ..."
+    echo "[BACKUP] Moving $file from ~ to $backupdir/config ..."
     mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory..."
     ln -s $dir/$file ~/.$file
+    echo "[LINKED] $file"
 done
 
-install_zsh () {
-# Test to see if zshell is installed.  If it is:
-if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-    # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
-    fi
-else
-    # If zsh isn't installed, get the platform of the current machine
-    platform=$(uname);
-    # If the platform is Linux, try an apt-get to install zsh and then recurse
-    if [[ $platform == 'Linux' ]]; then
-        sudo apt-get install zsh
-        install_zsh
-    # If the platform is OS X, tell the user to install zsh:)
-    elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script."
-        exit
-    fi
-fi
-}
+
+for file in $configfiles; do
+    echo " "
+    echo "[BACKUP] Moving $file from ~ to $backupdir/config ..."
+    mv ~/.$file ~/dotfiles_old/config
+    ln -s $dir/$file ~/.config/$file
+    echo "[LINKED] $file"
+done
+
+
+# ===============
+# Installers
+# ===============
 
 install_vim_plug () {
     # Get the latest version from GitHub
     # Then open vim and :PlugInstall
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "[INSTALLED] vimplug"
 }
-
 
 install_zplug () {
     # Zplug: manage zsh plugins
     curl -sL get.zplug.sh | zsh
+    echo "[INSTALLED] zplug"
 }
 
 install_tpm () {
     # tmux Package manager
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "[INSTALLED] tpm (tmux plugin manager)"
 }
 
 install_vim_plug
 install_zplug
 install_tpm
-#install_zsh
