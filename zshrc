@@ -83,7 +83,22 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 source "$HOME/dotfiles/aliases.zsh"
 source "$HOME/dotfiles/general.zsh"
 source "$HOME/dotfiles/functions.zsh"
-source "$HOME/dotfiles/shortcuts.zsh"
+
+# ================================
+#       SHORTCUTS
+# ================================
+
+# NLP + Code
+nlp=~/Documents/NLP
+gfdir=~/Documents/NLP/GF
+gflib=~/Documents/NLP/GF/lib/src
+papers=~/Documents/NLP/Papers
+moses=~/Documents/NLP/mosesdecoder
+
+# Code
+me=~/Documents/Me
+dotfiles=~/dotfiles
+projects=~/Documents/Projects
 
  
 # Path required for Homebrew and Virtualenv

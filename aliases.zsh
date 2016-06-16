@@ -102,4 +102,3 @@ alias -s css=vim
 alias -s js=vim
 alias -s html=vim
 alias -s json=vim
-
