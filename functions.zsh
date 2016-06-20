@@ -29,13 +29,6 @@
 #     command
 #   }
 
-# Turn hidden files on/off in Finder
-function finder_show_hidden { defaults write com.apple.finder AppleShowAllFiles YES ; }
-function finder_hide_hidden { defaults write com.apple.finder AppleShowAllFiles NO ; }
-
-# View man pages in Preview
-function pmanm { ps=`mktemp -t manpageXXXX`.ps ; man -t $@ > "$ps" ; open "$ps" ; }
-
 # myIP address
 function myip {
 	ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0 : " $2}'
@@ -65,10 +58,10 @@ function update_mac {
 
 # Update antigen and apt-get
 function update_ubuntu {
-	echo '———> Updating antigen...';
-	antigen selfupdate;
-	echo '———> Updating antigen packages...';
-	antigen update;
+	echo '———> Updating zplug...';
+    zplug update --self
+	echo '———> Updating zplug packages...';
+	zplug update
 	echo '———> Cleaning antigen local packages...';
 	antigen cleanup;
 	echo '———> Running apt-get update...';

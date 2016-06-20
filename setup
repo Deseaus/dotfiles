@@ -8,7 +8,7 @@ dir=~/dotfiles                    # dotfiles directory
 backupdir=~/dotfiles_backup          # old dotfiles backup directory
 
 # Files/dirs to symlink to ~
-homefiles="gitconfig gitignore_global agignore antigen vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc"
+homefiles="gitconfig gitignore_global agignore vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc"
 configfiles="htoprc"
 
 echo "==================="
