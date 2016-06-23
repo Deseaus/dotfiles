@@ -51,9 +51,9 @@ zplug "plugins/gitignore", from:oh-my-zsh, nice:10
 zplug "plugins/battery", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh, nice:10
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:10
+zplug "plugins/git", from:oh-my-zsh, nice:10
 setopt prompt_subst
-zplug "adambiggs/zsh-theme", use:adambiggs.z2h-theme
+zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme
 zplug "caiogondim/bullet-train-oh-my-zsh-theme"
 
 # Install packages that have not been installed yet
@@ -284,13 +284,7 @@ bindkey '^Z' foreground-vi
 
 # NLP + Code
 nlp=~/Documents/NLP
-gfdir=~/Documents/NLP/GF
-gflib=~/Documents/NLP/GF/lib/src
-papers=~/Documents/NLP/Papers
-moses=~/Documents/NLP/mosesdecoder
-me=~/Documents/Me
 dotfiles=~/dotfiles
-projects=~/Documents/Projects
 
  
 # Path required for Homebrew and Virtualenv
@@ -305,7 +299,7 @@ export LANG=en_GB.UTF-8
 # TODO only for mac
 # source /Users/Dani/.iterm2_shell_integration.zsh
 
-export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
 
 # Set up docker to use the default boot2docker on OS X
 #eval "$(docker-machine env default)"
