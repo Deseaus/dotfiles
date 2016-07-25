@@ -5,21 +5,8 @@
     ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
     ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
                                                                  
-    ██████╗ ██╗   ██╗                                            
-    ██╔══██╗╚██╗ ██╔╝                                            
-    ██████╔╝ ╚████╔╝                                             
-    ██╔══██╗  ╚██╔╝                                              
-    ██████╔╝   ██║                                               
-    ╚═════╝    ╚═╝                                               
-    
-    ██████╗ ███████╗███████╗███████╗ █████╗ ██╗   ██╗███████╗    
-    ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝    
-    ██║  ██║█████╗  ███████╗█████╗  ███████║██║   ██║███████╗    
-    ██║  ██║██╔══╝  ╚════██║██╔══╝  ██╔══██║██║   ██║╚════██║    
-    ██████╔╝███████╗███████║███████╗██║  ██║╚██████╔╝███████║    
-    ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝    
                                                                                                                                                                                       
-ZSH with a dash of Antigen and a pinch of Vim, a quick recipe for my dotfiles.
+ZSH with a dash of Zplug and a pinch of Vim, a quick recipe for my dotfiles.
 
 ## The Secret Sauce 
 
@@ -27,7 +14,7 @@ Some of the pronounced notes of obsessive simplicty and Python indentation come 
 
 ### ZSH
 
-* Managed by [Antigen](https://github.com/zsh-users/antigen).
+* Managed by [Zplug](https://github.com/zplug/zplug).
 * [Bullet Train](https://github.com/caiogondim/bullet-train-oh-my-zsh-theme) prompt.
 * [Solarized Dark](http://ethanschoonover.com/solarized) theme.
 
@@ -40,6 +27,7 @@ Some of the pronounced notes of obsessive simplicty and Python indentation come 
 ## Tmux
 
 * Plugins managed by [TPM](https://github.com/tmux-plugins/tpm)
+* Theme is [Maglev](https://github.com/caiogondim/maglev)
 
 ## Licence
 
