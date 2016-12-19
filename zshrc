@@ -289,6 +289,7 @@ dotfiles=~/dotfiles
  
 # Path required for Homebrew and Virtualenv
 export PATH=/usr/local/bin:$PATH
+export PATH=/Users/Dani/miniconda3/bin:$PATH
 
 # For solarized-vim to work well on ubuntu
 export TERM="xterm-256color"
