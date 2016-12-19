@@ -4,20 +4,6 @@
 #  ███╔╝  ╚════██║██╔══██║
 # ███████╗███████║██║  ██║
 # ╚══════╝╚══════╝╚═╝  ╚═╝
-#                         
-# ██████╗ ██╗   ██╗
-# ██╔══██╗╚██╗ ██╔╝
-# ██████╔╝ ╚████╔╝ 
-# ██╔══██╗  ╚██╔╝  
-# ██████╔╝   ██║   
-# ╚═════╝    ╚═╝   
-#                  
-# ██████╗ ███████╗███████╗███████╗ █████╗ ██╗   ██╗███████╗
-# ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝
-# ██║  ██║█████╗  ███████╗█████╗  ███████║██║   ██║███████╗
-# ██║  ██║██╔══╝  ╚════██║██╔══╝  ██╔══██║██║   ██║╚════██║
-# ██████╔╝███████╗███████║███████╗██║  ██║╚██████╔╝███████║
-# ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝
 #
 # Daniel Vidal Hussey
 # http://dvh.io
@@ -27,47 +13,47 @@
 #       ANTIGEN CONFIG
 # ================================
 
+# Export Zplug home
+export ZPLUG_HOME=/usr/local/opt/zplug
+
 # Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
-    source ~/.zplug/init.zsh && zplug update --self
+if [[ ! -d $ZPLUG_HOME ]]; then
+    echo "Zplug is not installed. Installing..."
+    brew install zplug
+    source $ZPLUG_HOME/init.zsh
+    zplug update --self
 fi
 
 # Essential
-source ~/.zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
 
 #zplug "robbyrussell/oh-my-zsh"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "plugins/python", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/brew", from:oh-my-zsh
-zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh, defer:2
 zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/gitignore", from:oh-my-zsh, nice:10
+zplug "plugins/gitignore", from:oh-my-zsh, defer:2
 zplug "plugins/battery", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh, nice:10
-zplug "plugins/git", from:oh-my-zsh, nice:10
+zplug "plugins/tmux", from:oh-my-zsh, defer:2
+zplug "plugins/git", from:oh-my-zsh, defer:2
 setopt prompt_subst
-zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme
-zplug "caiogondim/bullet-train-oh-my-zsh-theme"
+zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme, defer:2
+zplug "caiogondim/bullet-train-oh-my-zsh-theme", defer:2
 
 # Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
+if ! zplug check; then
+    zplug install
 fi
 
 # Then, source packages and add commands to $PATH
-zplug load
+zplug load 
 
 # ================================
 #       PLUGIN CONFIG
@@ -239,11 +225,6 @@ setopt AUTO_CD
 setopt AUTO_PUSHD 
 setopt PUSHD_IGNORE_DUPS
 
-# Use vim to view man pages
-# http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
-# TODO fix under ubuntu
-#export MANPAGER="col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -"
-
 # ================================
 #       HISTORY
 # ================================
@@ -282,11 +263,8 @@ bindkey '^Z' foreground-vi
 #       SHORTCUTS
 # ================================
 
-# NLP + Code
-nlp=~/Documents/NLP
 dotfiles=~/dotfiles
 
- 
 # Path required for Homebrew and Virtualenv
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/Dani/miniconda3/bin:$PATH
@@ -297,10 +275,4 @@ export TERM="xterm-256color"
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 
-# TODO only for mac
-# source /Users/Dani/.iterm2_shell_integration.zsh
-
 #export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
-
-# Set up docker to use the default boot2docker on OS X
-#eval "$(docker-machine env default)"
