@@ -43,7 +43,7 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode'
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
@@ -104,7 +104,7 @@ set timeout timeoutlen=225 ttimeoutlen=150
 set nobackup
 set noswapfile
 
-set clipboard=unnamedplus       " Yank to clipboard
+"set clipboard=unnamedplus       " Yank to clipboard
 
 set ruler                       " Text in status bar shows cursor location
 set number                      " Line numbers on left-hand side

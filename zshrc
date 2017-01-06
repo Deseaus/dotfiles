@@ -78,38 +78,53 @@ function myip {
 
 # Update zplug
 function update_zplug {
-	echo '———> Updating zplug...';
+    echo '⬇️ ⏳ Updating zplug...'
     zplug update --self
-	echo '———> Updating zplug packages...';
+    echo '✅ Done!'
+    echo '⬇️ ⏳ Updating zplug plugins...'
 	zplug update
+    echo '✅ Done!'
 }
 
 function update_mac {
     update_zplug()
-	echo '———> Running brew update...';
+    echo '⬇️ ⏳ Updating tmux plugins...'
+    ~/.tmux/plugins/tpm/bin/update_plugins all
+    echo '✅ Done!'
+	echo '⬇️ ⏳ Running brew update...';
 	brew update;
-	echo '———> Running brew upgrade...';
-	brew upgrade --all;
-	echo '———> Running brew cleanup...';
+    echo '✅ Done!'
+	echo '⬇️ ⏳ Running brew upgrade...';
+	brew upgrade;
+    echo '✅ Done!'
+	echo '⬇️ ⏳ Running brew cleanup...';
 	brew cleanup;
-	echo '———> Running brew prune...';
+    echo '✅ Done!'
+	echo '⬇️ ⏳ Running brew prune...';
 	brew prune;
-	echo '———> Running brew doctor...';
+    echo '✅ Done!'
+	echo '⬇️ ⏳ Running brew doctor...';
 	brew doctor;
+    echo '✅ Done!'
 }
 
 function update_ubuntu {
     update_zplug()
 	echo '———> Running apt-get update...';
     sudo apt-get update;
+    echo '✅ Done!'
 	echo '———> Running apt-get dist-upgrade...';
     sudo apt-get dist-upgrade;
+    echo '✅ Done!'
 	echo '———> Cleaning unused packages with apt-get autoclean...';
     sudo apt-get autoclean;
+    echo '✅ Done!'
 	echo '———> Cleaning unused dependencies with apt-get autoremove...';
     sudo apt-get autoremove;
+    echo '✅ Done!'
 	echo '———> Checking with apt-get check...';
     sudo apt-get check;
+    echo '✅ Done!'
 }
 
 # Create a new SSH key
@@ -274,5 +289,3 @@ export TERM="xterm-256color"
 
 export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
-
-#export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH"
