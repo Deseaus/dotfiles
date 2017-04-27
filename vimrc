@@ -43,10 +43,11 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------
 Plug 'Deseaus/vim-gf', {'for' : 'gf'}
 Plug 'terryma/vim-multiple-cursors'
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', {'for': 'py'}
 Plug 'LaTeX-Box-Team/LaTeX-Box', {'for': ['tex', 'bib']}
 Plug 'mbbill/undotree'
 Plug 'pdurbin/vim-tsv', {'for': 'tsv'}
+Plug 'rust-lang/rust.vim'
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -72,7 +73,7 @@ Plug 'airblade/vim-gitgutter'           " Show git diff marks in gutter
 "Plug 'ConradIrwin/vim-bracketed-paste' " Make pasting from OS work properly
 Plug 'junegunn/goyo.vim'                " Easier writing
 Plug 'elzr/vim-json'                    " Pretty JSON
-Plug 'mitsuhiko/vim-python-combined'    " Better python syntax
+"Plug 'mitsuhiko/vim-python-combined'    " Better python syntax
 Plug 'christoomey/vim-tmux-navigator'   " Painless vim-tmux navigation
 
 call plug#end()
@@ -373,6 +374,8 @@ let g:gitgutter_map_keys = 0
 "           Pymode
 " ----------------------------------
 
+let g:pymode = 1
+let g:pymode_python = 'python'
 " Rope
 let g:pymode_rope = 1
 "let g:pymode_rope_show_doc_bind = 'S'
@@ -395,9 +398,6 @@ let g:pymode_lint_sort = ['E', 'C', 'I']
 " Syntax
 let g:pymode_syntax_print_as_function = 1
 
-" Support virtualenv
-"let g:pymode_python = 'python3'
-let g:pymode = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_folding = 0
 let g:pymode_options = 1
