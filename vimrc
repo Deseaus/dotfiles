@@ -92,12 +92,16 @@ colorscheme solarized
 set backspace=indent,eol,start  " Allow backspace in all circumstances
 set history=10000                " Allow undo, remember last command with up
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.aux,*.gfo,*.dll,*.o,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib
-if has("persistent_undo")
-    set undodir=~/.vim/undo
-    set undofile
-endif
-set undolevels=5000             " Use many levels of undo
-set undoreload=5000
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+     let undodir = expand(vimDir . '/undo')
+     silent call system('mkdir -p ' . &undodir)
+     set undofile
+     set undolevels=5000             " Use many levels of undo
+     set undoreload=5000
+ endif
+
 
 set mouse=a                     " Allow selection with the mouse in all mode
 set timeout timeoutlen=225 ttimeoutlen=150
