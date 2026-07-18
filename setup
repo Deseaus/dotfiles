@@ -39,6 +39,15 @@ for file in $configfiles; do
     echo "[LINKED] $file"
 done
 
+# Modern Neovim config (lazy.nvim-based; see nvim-config/init.lua).
+# Separate from the legacy `nvim`/`nvimrc` entries above since Neovim only
+# reads ~/.config/nvim/init.lua, not ~/.nvimrc.
+echo " "
+echo "[BACKUP] Moving nvim config from ~/.config/nvim to $backupdir/config ..."
+mv ~/.config/nvim ~/dotfiles_old/config/nvim
+ln -s $dir/nvim-config ~/.config/nvim
+echo "[LINKED] nvim-config -> ~/.config/nvim"
+
 
 # ===============
 # Installers

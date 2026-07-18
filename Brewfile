@@ -70,6 +70,8 @@ brew 'szip'
 brew 'tbb'
 brew 'texinfo'
 brew 'the_silver_searcher'
+brew 'ripgrep'
+brew 'fd'
 brew 'vim', args: ['with-lua', 'with-luajit']
 brew 'wget'
 brew 'zsh'
