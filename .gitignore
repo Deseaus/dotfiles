@@ -7,3 +7,6 @@ vim/autoload/**
 vim/sessions/**
 vim/plugged/**
 tmux/resurrect/**
+
+# Tmux ignores
+tmux/plugins/**
