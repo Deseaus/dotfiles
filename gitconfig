@@ -19,6 +19,7 @@
     up = rebase
     c = commit
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	dag = log --graph --abbrev-commit --abbrev=8 --decorate --date=short --format=format:'%C(bold blue)%h%C(reset) - %C(cyan)%ad%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset)%n%C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [push]
 	default = simple
 [merge]

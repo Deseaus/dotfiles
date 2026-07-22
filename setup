@@ -8,7 +8,7 @@ dir=~/dotfiles                    # dotfiles directory
 backupdir=~/dotfiles_backup          # old dotfiles backup directory
 
 # Files/dirs to symlink to ~
-homefiles="gitconfig gitignore_global agignore vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc"
+homefiles="gitconfig gitignore_global agignore vim vimrc basicvimrc nvim nvimrc tmux tmux.conf zshrc zsh_plugins.txt zsh_plugins_pre.txt"
 configfiles="htoprc"
 
 echo "==================="
@@ -51,10 +51,10 @@ install_vim_plug () {
     echo "[INSTALLED] vimplug"
 }
 
-install_zplug () {
-    # Zplug: manage zsh plugins
-    curl -sL get.zplug.sh | zsh
-    echo "[INSTALLED] zplug"
+install_antidote () {
+    # Antidote: manage zsh plugins
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+    echo "[INSTALLED] antidote"
 }
 
 install_tpm () {
@@ -64,5 +64,5 @@ install_tpm () {
 }
 
 install_vim_plug
-install_zplug
+install_antidote
 install_tpm

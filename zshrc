@@ -6,61 +6,106 @@
 # ╚══════╝╚══════╝╚═╝  ╚═╝
 #
 # Daniel Vidal Hussey
-# http://dvh.io
-# http://github.io/Deseaus/dotfiles
-                                                         
+# https://github.com/Deseaus/dotfiles
+
 # ================================
-#       ANTIGEN CONFIG
+#       FPATH SELF-HEAL
 # ================================
 
-# Export Zplug home
-export ZPLUG_HOME=/usr/local/opt/zplug
-
-# Check if zplug is installed
-if [[ ! -d $ZPLUG_HOME ]]; then
-    echo "Zplug is not installed. Installing..."
-    brew install zplug
-    source $ZPLUG_HOME/init.zsh
-    zplug update --self
+# A shell/tmux server started before a Homebrew package (e.g. zsh itself) gets
+# upgraded can hand a stale FPATH down to every child it spawns afterwards (new
+# terminal tabs, new tmux panes), even though the upgrade is already fixed on
+# disk. Drop any fpath entries that no longer exist, re-add the current zsh
+# functions dir (compinit/add-zsh-hook/etc live there), and dedupe -- so every
+# fresh shell self-corrects instead of inheriting the staleness.
+typeset -U fpath
+fpath=(${^fpath}(N-/))
+if type brew &>/dev/null; then
+    zsh_functions_dir="$(brew --prefix zsh)/share/zsh/functions"
+    [[ -d $zsh_functions_dir ]] && fpath=($zsh_functions_dir $fpath)
+    unset zsh_functions_dir
 fi
 
-# Essential
-source $ZPLUG_HOME/init.zsh
+# ================================
+#       ANTIDOTE CONFIG
+# ================================
 
-#zplug "robbyrussell/oh-my-zsh"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "plugins/python", from:oh-my-zsh
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/github", from:oh-my-zsh
-zplug "plugins/brew", from:oh-my-zsh
-zplug "plugins/osx", from:oh-my-zsh, defer:2
-zplug "plugins/extract", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/gitignore", from:oh-my-zsh, defer:2
-zplug "plugins/battery", from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh, defer:2
-zplug "plugins/git", from:oh-my-zsh, defer:2
+# Install antidote if missing
+if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
+    echo "Antidote is not installed. Installing..."
+    git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+fi
+
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 setopt prompt_subst
-zplug "adambiggs/zsh-theme", use:adambiggs.zsh-theme, defer:2
-zplug "caiogondim/bullet-train-oh-my-zsh-theme", defer:2
 
-# Install packages that have not been installed yet
-if ! zplug check; then
-    zplug install
-fi
-
-# Then, source packages and add commands to $PATH
-zplug load 
 
 # ================================
 #       PLUGIN CONFIG
 # ================================
+# NOTE: these must be set BEFORE the plugin bundle is sourced below - several
+# plugins (zsh-syntax-highlighting, zsh-autosuggestions) only apply these
+# settings once, at source time.
 
 # ZSH hilighting configuration
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+
+# bullet-train calls git_prompt_info/git_prompt_status synchronously via eval
+# (not through a literal $(git_prompt_info) in $PROMPT), so oh-my-zsh never
+# detects it needs to register its async git-prompt handler and the segment
+# renders empty forever. Force the old synchronous codepath instead.
+zstyle ':omz:alpha:lib:git' async-prompt no
+
+BULLETTRAIN_PROMPT_ORDER=(
+     time
+     status
+     custom
+     context
+     dir
+     #virtualenv
+     git
+     cmd_exec_time
+)
+
+# Load and configure autosuggest
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8C8888,underline"
+
+# Several oh-my-zsh plugins (docker, kubectl, ...) cache completions here;
+# normally set by oh-my-zsh's own core, which we don't load standalone.
+export ZSH_CACHE_DIR=${ZDOTDIR:-$HOME}/.cache/oh-my-zsh
+mkdir -p "$ZSH_CACHE_DIR/completions"
+
+
+# ================================
+#       PLUGIN LOAD
+# ================================
+# Antidote compiles each plugin list into a static, fast-loading bundle.
+# Regenerate a bundle whenever its .txt source changes.
+#
+# Loading happens in three stages because compinit has to sit in the middle:
+# zsh-completions only adds to $fpath (compinit needs to see it), while the
+# oh-my-zsh plugins below call `compdef` directly at source time (which only
+# exists once compinit has run).
+
+zsh_plugins_pre=${ZDOTDIR:-$HOME}/.zsh_plugins_pre
+if [[ ! ${zsh_plugins_pre}.zsh -nt ${zsh_plugins_pre}.txt ]]; then
+    antidote bundle <${zsh_plugins_pre}.txt >${zsh_plugins_pre}.zsh
+fi
+source ${zsh_plugins_pre}.zsh
+
+# Cache the completion dump and only rebuild it once a day.
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
+
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+    antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
+fi
+source ${zsh_plugins}.zsh
 
 
 # ================================
@@ -76,18 +121,17 @@ function myip {
 	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
-# Update zplug
-function update_zplug {
-    echo '⬇️ ⏳ Updating zplug...'
-    zplug update --self
-    echo '✅ Done!'
-    echo '⬇️ ⏳ Updating zplug plugins...'
-	zplug update
+# Update antidote plugins
+function update_antidote {
+    echo '⬇️ ⏳ Updating antidote plugins...'
+	antidote update
+	antidote bundle <${ZDOTDIR:-$HOME}/.zsh_plugins_pre.txt >${ZDOTDIR:-$HOME}/.zsh_plugins_pre.zsh
+	antidote bundle <${ZDOTDIR:-$HOME}/.zsh_plugins.txt >${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
     echo '✅ Done!'
 }
 
 function update_mac {
-    update_zplug()
+    update_antidote
     echo '⬇️ ⏳ Updating tmux plugins...'
     ~/.tmux/plugins/tpm/bin/update_plugins all
     echo '✅ Done!'
@@ -108,25 +152,6 @@ function update_mac {
     echo '✅ Done!'
 }
 
-function update_ubuntu {
-    update_zplug()
-	echo '———> Running apt-get update...';
-    sudo apt-get update;
-    echo '✅ Done!'
-	echo '———> Running apt-get dist-upgrade...';
-    sudo apt-get dist-upgrade;
-    echo '✅ Done!'
-	echo '———> Cleaning unused packages with apt-get autoclean...';
-    sudo apt-get autoclean;
-    echo '✅ Done!'
-	echo '———> Cleaning unused dependencies with apt-get autoremove...';
-    sudo apt-get autoremove;
-    echo '✅ Done!'
-	echo '———> Checking with apt-get check...';
-    sudo apt-get check;
-    echo '✅ Done!'
-}
-
 # Create a new SSH key
 function generate_ssh_key {
 	ssh-keygen -t rsa -C "daniel.vidal.hussey@gmail.com" -f main_key;
@@ -140,11 +165,15 @@ function mkd {
 }
 
 # ================================
-#       ALIASES
+#      ZSH
+# ================================
+
+
+# ================================
+#      THEME
 # ================================
 
 # Detect which `ls` flavor is in use
-# FIXME not working in zsh?
 # https://github.com/mathiasbynens/dotfiles/
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
@@ -153,27 +182,27 @@ else # OS X `ls`
 fi
 
 # Colour theme for ZSH completions 
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 # Solarized-like colours for the BSD version of ls included in OSX
 # https://github.com/seebi/dircolors-solarized/issues/10
 # Consider installing GNU versions of tools: brew install coreutils
 # http://tealscientific.com/blog/?p=2450
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+export LS_COLORS=gxfxbEaEBxxEhEhBaDaCaD
 
-alias l='ls -lhoF ${colorflag}'		    # No hidden
-alias ll='ls -lahoF ${colorflag}'	    # +Hidden
-alias lls='ls -lahSoF ${colorflag}'	    # +Hidden +Sort by size
+
+# ================================
+#       ALIASES
+# ================================
+
 alias llt='ls -lahtoF ${colorflag}'	    # +Hidden +Sort by modified time
 
 alias mailsize='du -hs ~/Library/mail'
-alias ttop='top -ocpu -R -F -s 2 -n30'  # Top processes
 
 alias cp='cp -i'                        # Don't silently overwrite
 
-# Redefine ls commands using tree
-alias t='tree -ACFh --du'	
+# ls commands using tree
+alias t='tree -ACFh --du'
 alias l='t -L 1 -D -g --filelimit 500'
 alias ll='l -a'
 alias lls='ll --sort=size'
@@ -194,7 +223,6 @@ alias g='git'
 alias h='history'
 
 # Pretty print JSON
-alias pjson='python -m json.tool'
 alias pp='jq .'
 
 alias please='sudo $(fc -ln -1)'        # http://unix.stackexchange.com/a/158480
@@ -202,14 +230,9 @@ alias please='sudo $(fc -ln -1)'        # http://unix.stackexchange.com/a/158480
 # Dotfile configuration
 alias my-zsh="vim ~/.zshrc"
 alias my-vimrc='vim ~/.vimrc'
-alias my-aliases='vim ~/dotfiles/aliases.zsh'
-alias my-general='vim ~/dotfiles/general.zsh'
-alias my-functions='vim ~/dotfiles/functions.zsh'
-alias my-shortcuts='vim ~/dotfiles/shortcuts.zsh'
 
 # Suffix aliases
 alias -s py=vim
-alias -s gf=vim
 alias -s md=vim
 alias -s markdown=vim
 alias -s css=vim
@@ -280,12 +303,20 @@ bindkey '^Z' foreground-vi
 
 dotfiles=~/dotfiles
 
-# Path required for Homebrew and Virtualenv
-export PATH=/usr/local/bin:$PATH
-export PATH=/Users/Dani/miniconda3/bin:$PATH
-
 # For solarized-vim to work well on ubuntu
 export TERM="xterm-256color"
 
-export LC_ALL=en_GB.UTF-8
-export LANG=en_GB.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# ================================
+#       HOMEBREW
+# ================================
+
+# PATH now set in ~/.zprofile (this file is evaled once at system startup, not every
+# time a shell is launched).
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Created by `pipx` on 2024-11-12 14:29:26
+export PATH="$PATH:/Users/Dani/.local/bin"
+export PATH="/opt/homebrew/sbin:$PATH"

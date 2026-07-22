@@ -6,7 +6,7 @@
     ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
                                                                  
                                                                                                                                                                                       
-ZSH with a dash of Zplug and a pinch of Vim, a quick recipe for my dotfiles.
+ZSH with a dash of Antidote and a pinch of Vim, a quick recipe for my dotfiles.
 
 ## The Secret Sauce 
 
@@ -14,7 +14,7 @@ Some of the pronounced notes of obsessive simplicty and Python indentation come 
 
 ### ZSH
 
-* Managed by [Zplug](https://github.com/zplug/zplug).
+* Managed by [Antidote](https://github.com/mattmc3/antidote).
 * [Bullet Train](https://github.com/caiogondim/bullet-train-oh-my-zsh-theme) prompt.
 * [Solarized Dark](http://ethanschoonover.com/solarized) theme.
 
