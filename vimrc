@@ -95,12 +95,12 @@ set wildignore+=*.swp,*.bak,*.pyc,*.class,*.aux,*.gfo,*.dll,*.o,*.jpg,*.jpeg,*.p
 
 " Keep undo history across sessions by storing it in a file
 if has('persistent_undo')
-     let undodir = expand(vimDir . '/undo')
-     silent call system('mkdir -p ' . &undodir)
-     set undofile
-     set undolevels=5000             " Use many levels of undo
-     set undoreload=5000
- endif
+    let &undodir = expand('~/.vim/undo')
+    silent call system('mkdir -p ' . &undodir)
+    set undofile
+    set undolevels=5000             " Use many levels of undo
+    set undoreload=5000
+endif
 
 
 set mouse=a                     " Allow selection with the mouse in all mode
@@ -247,10 +247,12 @@ let g:airline_powerline_fonts = 1
 "           Unite
 " ---------------------------------
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-" Pretty: https://github.com/Shougo/unite.vim/issues/531
-call unite#custom#source( 'buffer', 'converters', ['converter_file_directory'])
+if exists('*unite#filters#matcher_default#use')
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#filters#sorter_default#use(['sorter_rank'])
+    " Pretty: https://github.com/Shougo/unite.vim/issues/531
+    call unite#custom#source( 'buffer', 'converters', ['converter_file_directory'])
+endif
 
 let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
